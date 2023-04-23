@@ -92,7 +92,21 @@ Here is another comment.
 -->
 
 ---
+layout: default
+---
+
+# Table of contents
+
+```
+<Toc minDepth="1" maxDepth="5"></Toc>
+```
+
+<Toc></Toc>
+
+---
 transition: slide-up
+
+level: 2
 ---
 
 # Navigation
@@ -355,6 +369,26 @@ C -->|One| D[Result 1]
 C -->|Two| E[Result 2]
 ```
 
+```mermaid
+mindmap
+  root((mindmap))
+    Origins
+      Long history
+      ::icon(fa fa-book)
+      Popularisation
+        British popular psychology author Tony Buzan
+    Research
+      On effectivness<br/>and features
+      On Automatic creation
+        Uses
+            Creative techniques
+            Strategic planning
+            Argument mapping
+    Tools
+      Pen and paper
+      Mermaid
+```
+
 ```plantuml {scale: 0.7}
 @startuml
 
@@ -407,3 +441,8 @@ class: text-center
 # Learn More
 
 [Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
+
+---
+layout: end
+---
+
