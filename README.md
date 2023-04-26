@@ -1,11 +1,59 @@
-# Welcome to [Slidev](https://github.com/slidevjs/slidev)!
+# 🧛‍♂️ slidev-theme-dracula
 
-To start the slide show:
+![theme-banner.png](https://user-images.githubusercontent.com/47495003/217882601-bd444dff-8e47-4240-940d-49e9e21fed41.png)
+
+[![NPM version](https://img.shields.io/npm/v/slidev-theme-dracula?color=bd93f9&label=)](https://www.npmjs.com/package/slidev-theme-dracula)
+
+A Dracula theme for [Slidev](https://github.com/slidevjs/slidev).
+
+<!--
+  Learn more about how to write a theme:
+  https://sli.dev/themes/write-a-theme.html
+--->
+
+<!--
+  run `npm run dev` to check out the slides for more details of how to start writing a theme
+-->
+
+<!--
+  Put some screenshots here to demonstrate your theme
+
+  Live demo: [...]
+-->
+
+## 🛠️ Install
+
+Add the following frontmatter to your `slides.md`. Start Slidev then it will prompt you to install the theme automatically.
+
+<pre><code>---
+theme: <b>dracula</b>
+---</code></pre>
+
+Learn more about [how to use a theme](https://sli.dev/themes/use).
+
+## 🧱 Layouts
+
+This theme provides the following layouts:
+
+> _Supported by default theme of slidev_
+
+## 📦 Components
+
+> _Raise issue_
+
+## 🤝 Contributing
 
 - `npm install`
-- `npm run dev`
-- visit http://localhost:3030
+- `npm run dev` to start theme preview of `example.md`
+- Edit the `example.md` and style to see the changes
+- `npm run export` to generate the preview PDF
+- `npm run screenshot` to generate the preview PNG
 
-Edit the [slides.md](./slides.md) to see the changes.
 
-Learn more about Slidev on [documentations](https://sli.dev/).
+## 💖 Sponsors
+
+<p align="center">
+  <a href="https://cdn.jsdelivr.net/gh/jd-solanki/static/sponsors/sponsors.svg">
+    <img alt="sponsors" src='https://cdn.jsdelivr.net/gh/jd-solanki/static/sponsors/sponsors.svg'/>
+  </a>
+</p>

@@ -1,14 +1,46 @@
 {
-  "name": "slides",
-  "private": true,
+  "name": "slidev-theme-dracula",
+  "version": "0.1.0",
+  "keywords": [
+    "slidev-theme",
+    "slidev",
+    "dracula",
+    "dracula-theme",
+    "dark-theme",
+    "theme"
+  ],
+  "engines": {
+    "node": ">=14.0.0",
+    "slidev": ">=0.39.0"
+  },
   "scripts": {
-    "build": "slidev build",
-    "dev": "slidev --open",
-    "export": "slidev export"
+    "build": "slidev build example.md",
+    "dev": "slidev example.md --open --port 3030",
+    "export": "slidev export example.md",
+    "screenshot": "slidev export example.md --format png",
+    "release": "bumpp && npm publish"
   },
   "dependencies": {
-    "@slidev/cli": "^0.40.14",
-    "@slidev/theme-default": "^0.21.2",
-    "@slidev/theme-seriph": "^0.21.3"
+    "@slidev/types": "^0.39.0",
+    "codemirror-theme-vars": "^0.1.1",
+    "prism-theme-vars": "^0.2.4",
+    "shiki": "0.13.0",
+    "theme-vitesse": "^0.6.2"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^0.39.0",
+    "bumpp": "^8.2.1"
+  },
+  "//": "Learn more: https://sli.dev/themes/write-a-theme.html",
+  "slidev": {
+    "colorSchema": "dark",
+    "highlighter": "shiki",
+    "defaults": {
+      "fonts": {
+        "sans": "Nunito Sans",
+        "mono": "Fira Code"
+      },
+      "highlighter": "shiki"
+    }
   }
 }
