@@ -1,11 +1,4 @@
-# 🧛‍♂️ slidev-theme-dracula
-
-![theme-banner.png](https://user-images.githubusercontent.com/47495003/217882601-bd444dff-8e47-4240-940d-49e9e21fed41.png)
-
-[![NPM version](https://img.shields.io/npm/v/slidev-theme-dracula?color=bd93f9&label=)](https://www.npmjs.com/package/slidev-theme-dracula)
-
-A Dracula theme for [Slidev](https://github.com/slidevjs/slidev).
-
+# my-slides
 <!--
   Learn more about how to write a theme:
   https://sli.dev/themes/write-a-theme.html
@@ -26,7 +19,7 @@ A Dracula theme for [Slidev](https://github.com/slidevjs/slidev).
 Add the following frontmatter to your `slides.md`. Start Slidev then it will prompt you to install the theme automatically.
 
 <pre><code>---
-theme: <b>dracula</b>
+theme: <b>black</b>
 ---</code></pre>
 
 Learn more about [how to use a theme](https://sli.dev/themes/use).
