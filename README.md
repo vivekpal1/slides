@@ -44,9 +44,7 @@ This theme provides the following layouts:
 
 
 ## 💖 Sponsors
-
+> If this project has been helpful to you, you have the option to provide sponsorship.
 <p align="center">
-  <a href="https://cdn.jsdelivr.net/gh/jd-solanki/static/sponsors/sponsors.svg">
-    <img alt="sponsors" src='https://cdn.jsdelivr.net/gh/jd-solanki/static/sponsors/sponsors.svg'/>
   </a>
 </p>
