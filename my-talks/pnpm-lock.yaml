@@ -32,8 +32,6 @@ importers:
 
   20230514-foss/src: {}
 
-  20230602-jsconf/src: {}
-
 packages:
 
   /@ampproject/remapping@2.2.0:
