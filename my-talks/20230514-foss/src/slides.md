@@ -7,7 +7,7 @@ transition: fade-out
 ---
 
 <h1 flex="~ col">
-<div>How Open Source is Revolutionizing the Internet<span inline-block i-ipfs-light text-1.2em mb-2/> With Open Web <b font-bold></b></div>
+<div>How Open Source is Revolutionizing the Internet<span inline-block i-ipfs-light text-1.2em mb-2/> <b font-bold>With Open Web</b></div>
 </h1>
 
 <div text-sm tracking-widest>
@@ -15,7 +15,7 @@ Vivek Pal
 </div>
 
 <div abs-br mx-10 my-12 flex="~ col" text-sm text-right>
-  <div>FOSS United Delhi</div>
+  <div>FOSS United, Delhi Chapter</div>
   <div text-sm opacity-50>14th May 2023</div>
 </div>
 
@@ -73,13 +73,19 @@ growY: 120
 growSize: 1.5
 ---
 
-# One of the largest internet data breach in history (2013-2016)
+<img src="https://1000logos.net/wp-content/uploads/2017/05/Yahoo-Logo-2009.png" w-60/>
+---
+layout: center
+growX: 50
+growY: 120
+growSize: 1.5
+---
+
+# One of the largest internet data breaches in history!
 
 - Massive cyberattack on Yahoo resulted in the compromise of over three billion user accounts.
 - Exposed personal information such as names, emails, phone numbers, and hashed passwords.
 - Highlighted the importance of robust cybersecurity measures and the risks of centralized platforms.
-
-
 
 ---
 growX: 50
@@ -94,11 +100,13 @@ growY: 0
 <div flex="~ col" items-center>
 <div text-2xl>Facebook in 2018</div>
 <div text-base>Facebook's data scandal revealed the unauthorized harvesting of millions of user data by Cambridge Analytica.</div>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/2048px-Facebook_f_logo_%282019%29.svg.png" w-30/>
 </div>
 
 <div flex="~ col" items-center>
 <div text-2xl>Napster: Rise and Fall</div>
 <div text-base>Popular music-sharing platform in the late 1990s. Legal battles over copyright infringement. Court-ordered shutdown in 2000.</div>
+<img src="https://1000logos.net/wp-content/uploads/2020/08/Napster-Logo-2003.png" w-50/>
 </div>
 
 </v-clicks>
@@ -112,7 +120,21 @@ growX: 10
 growY: 90
 ---
 
-# Open Web
+<div flex="~ gap-2 items-center">
+  <div i-ri-web-fill text-8xl/>
+  <div text-8xl font-bold>Open Web</div>
+  <div i-ri-vercel-fill text-8xl/>
+</div>
+
+
+---
+layout: center
+class: text-center
+growX: 10
+growY: 90
+---
+
+## Open Web refers to the philosophy and practice of fostering an inclusive, decentralized, and accessible internet that promotes collaboration, knowledge sharing, and user empowerment.
 
 ---
 layout: center
@@ -187,6 +209,7 @@ growY: 10
 </v-clicks>
 </div>
 
+---
 
 <div v-click transition-all duration-500 :class="$slidev.nav.clicks === 0 ? 'op0' : $slidev.nav.clicks > 1 ? 'op50 text-2xl' : 'translate-y-10 text-4xl'">libp2p</div>
 
@@ -211,7 +234,7 @@ growY: 10
 </v-clicks>
 </div>
 
-
+---
 
 <div v-click transition-all duration-500 :class="$slidev.nav.clicks === 0 ? 'op0' : $slidev.nav.clicks > 1 ? 'op50 text-2xl' : 'translate-y-10 text-4xl'">WebRTC</div>
 
@@ -235,6 +258,8 @@ growY: 10
 
 </v-clicks>
 </div>
+
+---
 
 <div v-click transition-all duration-500 :class="$slidev.nav.clicks === 0 ? 'op0' : $slidev.nav.clicks > 1 ? 'op50 text-2xl' : 'translate-y-10 text-4xl'">Federated Networks</div>
 
@@ -285,4 +310,4 @@ growY: 120
 
 # Thank You!
 
-Find me on [vivekpall.in](https://vivekpal.in)
+Find me on [vivekpal.in](https://vivekpal.in)
