@@ -51,10 +51,6 @@ Full Stack Dev<br>
 
 </div>
 
-<!--
-
--->
-
 ---
 layout: center
 growX: 50
@@ -96,18 +92,13 @@ growY: 0
 <v-clicks>
 
 <div flex="~ col" items-center>
-<div text-2xl>IPFS</div>
-<div text-base op50>Distrubuted Storage</div>
+<div text-2xl>Facebook in 2018</div>
+<div text-base>Facebook's data scandal revealed the unauthorized harvesting of millions of user data by Cambridge Analytica.</div>
 </div>
 
 <div flex="~ col" items-center>
-<div text-2xl>libp2p</div>
-<div text-base op50>p2p library</div>
-</div>
-
-<div flex="~ col" items-center>
-<div text-2xl>WebRTC</div>
-<div text-base op50>Communication</div>
+<div text-2xl>Napster: Rise and Fall</div>
+<div text-base>Popular music-sharing platform in the late 1990s. Legal battles over copyright infringement. Court-ordered shutdown in 2000.</div>
 </div>
 
 </v-clicks>
