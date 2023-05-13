@@ -40,7 +40,7 @@ Full Stack Dev<br>
   <div i-ri-github-line op50 ma text-xl ml4/>
   <div><a href="https://github.com/vivekpal1" target="_blank" class="border-none! font-300">vivekpal1</a></div>
   <div i-ri-mastodon-line op50 ma text-xl ml4/>
-  <div><a href="https://fosstodon.org/@vivekpal" target="_blank" class="border-none! >font-300">vivekpal</a></div>
+  <div><a href="https://fosstodon.org/@vivekpal" target="_blank" class="border-none! font-300">vivekpal</a></div>
   <div i-ri-twitter-line op50 ma text-xl ml4/>
   <div><a href="https://twitter.com/vivekpal0x" target="_blank" class="border-none! font-300">vivekpal0x</a></div>
 </div>
@@ -103,3 +103,186 @@ growY: 0
 
 </v-clicks>
 </div>
+
+
+---
+layout: center
+class: text-center
+growX: 10
+growY: 90
+---
+
+# Open Web
+
+---
+layout: center
+class: text-center
+growX: 10
+growY: 90
+---
+
+### The Open Web is an ever-evolving concept that necessitates ongoing efforts to uphold these principles and adapt to emerging challenges and advancements in technology.
+
+---
+layout: 'center'
+class: 'text-center'
+growX: 50
+growY: 10
+---
+
+<div v-click transition-all duration-500 :class="$slidev.nav.clicks === 0 ? 'op0' : $slidev.nav.clicks > 1 ? 'op50 text-2xl' : 'translate-y-10 text-4xl'">Introducing</div>
+
+<div class="nuxt-devtools-logo" v-click>
+  <NuxtDevTools h-20/>
+</div>
+
+---
+
+<div ml-14 text-lg op50 mb--4>Some amazing protocols</div>
+<h1><NuxtDevTools h-15/></h1>
+
+<div text-3xl>
+<v-clicks>
+
+- IPFS
+
+- libp2p
+
+- WebRTC
+
+- Federated Networks
+
+
+</v-clicks>
+</div>
+
+---
+layout: 'center'
+class: 'text-center'
+growX: 50
+growY: 10
+---
+
+<div v-click transition-all duration-500 :class="$slidev.nav.clicks === 0 ? 'op0' : $slidev.nav.clicks > 1 ? 'op50 text-2xl' : 'translate-y-10 text-4xl'">IPFS</div>
+
+<div class="nuxt-devtools-logo" v-click>
+  <NuxtDevTools h-20/>
+</div>
+
+---
+
+<div ml-14 text-lg op50 mb--4>IPFS</div>
+<h1><NuxtDevTools h-15/></h1>
+
+<div text-2xl>
+<v-clicks>
+
+- Decentralized file storage and distribution network.
+- Content-addressable, using cryptographic hashes for unique identification.
+- Efficient data transfer through peer-to-peer networking.
+- Redundancy and data resilience through content replication.
+- Enables censorship resistance and offline file availability.
+
+
+</v-clicks>
+</div>
+
+
+<div v-click transition-all duration-500 :class="$slidev.nav.clicks === 0 ? 'op0' : $slidev.nav.clicks > 1 ? 'op50 text-2xl' : 'translate-y-10 text-4xl'">libp2p</div>
+
+<div class="nuxt-devtools-logo" v-click>
+  <NuxtDevTools h-20/>
+</div>
+
+---
+
+<div ml-14 text-lg op50 mb--4>lilp2p</div>
+<h1><NuxtDevTools h-15/></h1>
+
+<div text-2xl>
+<v-clicks>
+
+- libp2p is a modular networking library for creating peer-to-peer applications.
+- Enables secure and decentralized communication between nodes.
+- Supports various protocols, including encrypted connections and peer discovery.
+- Provides flexibility and interoperability across different network environments.
+
+
+</v-clicks>
+</div>
+
+
+
+<div v-click transition-all duration-500 :class="$slidev.nav.clicks === 0 ? 'op0' : $slidev.nav.clicks > 1 ? 'op50 text-2xl' : 'translate-y-10 text-4xl'">WebRTC</div>
+
+<div class="nuxt-devtools-logo" v-click>
+  <NuxtDevTools h-20/>
+</div>
+
+---
+
+<div ml-14 text-lg op50 mb--4>WebRTC</div>
+<h1><NuxtDevTools h-15/></h1>
+
+<div text-2xl>
+<v-clicks>
+
+- WebRTC is an open-source technology that enables real-time audio and video communication directly in web browsers.
+- Facilitates peer-to-peer communication without the need for plugins or additional software.
+- Allows for secure and encrypted media transmission.
+- Supports various applications, including video conferencing, voice calling, and data sharing.
+
+
+</v-clicks>
+</div>
+
+<div v-click transition-all duration-500 :class="$slidev.nav.clicks === 0 ? 'op0' : $slidev.nav.clicks > 1 ? 'op50 text-2xl' : 'translate-y-10 text-4xl'">Federated Networks</div>
+
+<div class="nuxt-devtools-logo" v-click>
+  <NuxtDevTools h-20/>
+</div>
+
+---
+
+<div ml-14 text-lg op50 mb--4>Federated Networks</div>
+<h1><NuxtDevTools h-15/></h1>
+
+<div text-2xl>
+<v-clicks>
+
+- Federated networks are decentralized systems where multiple independent instances or nodes connect to form a network.
+- Users have control over their data and can choose the instance they join, fostering user-driven communities.
+- Example: Mastodon, a federated social networking platform that allows users to create their own instances, communicate across instances, and customize their experience.
+- Federated networks promote user autonomy, data privacy, and diversity of online communities.
+
+
+</v-clicks>
+</div>
+
+
+
+---
+growX: 0
+growY: 50
+---
+
+# WebAssembly <span v-click> - elevating Open Web</span>
+
+<v-clicks>
+
+- WebAssembly (Wasm) is a binary instruction format that allows running code at near-native performance in web browsers.
+- Enables running complex applications and games directly in the browser without the need for plugins or specific programming languages.
+- Provides a secure sandboxed environment for executing code, ensuring safety and compatibility.
+- WebAssembly empowers developers to create high-performance web applications and expands the possibilities of the Open Web.
+</v-clicks>
+
+---
+layout: intro
+class: text-center pb-5
+growX: 50
+growY: 120
+---
+
+# Thank You!
+
+Find me on [vivekpall.in](https://vivekpal.in)
