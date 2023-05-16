@@ -284,7 +284,36 @@ growY: 10
 </v-clicks>
 </div>
 
+---
 
+<div v-click transition-all duration-500 :class="$slidev.nav.clicks === 0 ? 'op0' : $slidev.nav.clicks > 1 ? 'op50 text-2xl' : 'translate-y-10 text-4xl'">Impact of Open Source</div>
+
+<div class="nuxt-devtools-logo" v-click>
+  <NuxtDevTools h-20/>
+</div>
+
+---
+layout: 'center'
+class: 'text-center'
+growX: 50
+growY: 10
+---
+
+<div ml-14 text-lg op50 mb--4>Impact of Open Source</div>
+<h1><NuxtDevTools h-15/></h1>
+
+<div text-2xl>
+<v-clicks>
+
+- Open source has been instrumental in shaping the Open Web, driving innovation and collaboration.
+- It empowers developers to freely access, modify, and contribute to the development of web technologies.
+- Open source fosters transparency, security, and reliability in web solutions, benefiting users and businesses alike.
+- The Open Web thrives on the principles of openness, community-driven development, and shared knowledge.
+- Open source enables the democratization of technology, promoting inclusivity and equal access to web resources.
+
+
+</v-clicks>
+</div>
 
 ---
 growX: 0
