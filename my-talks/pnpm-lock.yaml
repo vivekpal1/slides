@@ -30,7 +30,11 @@ importers:
         specifier: ^0.47.5
         version: 0.47.5(vite@3.2.5)
 
-  20230514-foss/src: {}
+  20230514-fossunited/src: {}
+
+  20230518-fosscu/src: {}
+
+  20230602-jsconf/src: {}
 
 packages:
 
