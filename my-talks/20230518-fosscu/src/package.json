@@ -1,8 +1,0 @@
-{
-  "private": true,
-  "scripts": {
-    "dev": "slidev",
-    "build": "slidev build --base /20230518-fosscu/ --out ../../dist/20230518-fosscu",
-    "export": "slidev export --dark --output ../20230518-fosscu.pdf"
-  }
-}
