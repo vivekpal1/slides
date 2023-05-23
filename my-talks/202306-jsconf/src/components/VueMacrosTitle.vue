@@ -1,5 +1,5 @@
 <template>
-  <div class="vue-macros-title"><slot>Vue Macros</slot></div>
+  <div class="vue-macros-title"><slot>WASI</slot></div>
 </template>
 
 <style scoped>

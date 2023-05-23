@@ -1,6 +1,6 @@
 ---
 layout: center
-title: <VueMacrosTitle />
+title: <WASITitle />
 ---
 
 <div flex="~ gap-5" items-center>
