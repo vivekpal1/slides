@@ -10,7 +10,7 @@ h6 {
 }
 
 .dark #slide-content {
-  background-color: rgb(20, 36, 28) !important;
+  background-color: rgb(36, 35, 32) !important;
 }
 
 /* Transitions */
@@ -33,5 +33,5 @@ h6 {
 }
 
 iframe {
-  background: black;
+  background: rgb(22, 22, 22);
 }
