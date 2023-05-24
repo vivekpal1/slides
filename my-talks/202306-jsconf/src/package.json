@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "slidev",
-    "build": "slidev build --base /2023-06-jsconf/ --out ../../dist/2023-06-jsconf",
-    "export": "slidev export --dark --output ../2023-06-jsconf.pdf"
+    "build": "slidev build --base /20230514-foss/ --out ../../dist/20230514-foss",
+    "export": "slidev export --dark --output ../20230514-foss.pdf"
   }
 }
