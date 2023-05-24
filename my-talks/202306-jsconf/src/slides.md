@@ -1,8 +1,7 @@
 ---
 layout: cover
 highlighter: shiki
-css: unocss
-colorSchema: dark
+colorSchema: light
 transition: fade-out
 ---
 
