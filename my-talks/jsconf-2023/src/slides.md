@@ -2,11 +2,12 @@
 layout: cover
 highlighter: shiki
 colorSchema: light
+css: unocss
 transition: fade-out
 ---
 
 <h1 flex="~ col">
-<div> <b font-bold>Intro to WASI</b> Elevating your web apps with WebAssembly System Interface!<span inline-block i-javascript text-1.2em mb-2/></div>
+<div> <b font-bold>Intro to WASI</b> <br/> Elevating your web apps with WebAssembly System Interface!</div>
 </h1>
 
 <div text-sm tracking-widest>
@@ -72,4 +73,4 @@ growY: 120
 growSize: 1.5
 ---
 
-<img src="./WASI-small.png" w-60/>
+<img src="https://wasi.dev/polyfill/WASI-small.png" w-60/>
