@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "slidev",
-    "build": "slidev build --base /20230514-foss-united/ --out ../../dist/20230514-foss-united",
-    "export": "slidev export --dark --output ../20230514-foss-united.pdf"
+    "build": "slidev build --base /202305-foss-united/ --out ../../dist/202305-foss-united",
+    "export": "slidev export --dark --output ../202305-foss-united.pdf"
   }
 }
