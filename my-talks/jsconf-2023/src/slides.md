@@ -267,6 +267,15 @@ growY: 120
 growSize: 1.5
 ---
 
+# AssemblyScript
+
+---
+layout: center
+growX: 50
+growY: 120
+growSize: 1.5
+---
+
 # WASI Beyond the Browser
 
 ---
