@@ -39,8 +39,6 @@ Full Stack Dev<br>
   <div><a href="https://vivekpal.in" target="_blank" class="border-none! font-300">vivekpal.in</a></div>
   <div i-ri-github-line op50 ma text-xl ml4/>
   <div><a href="https://github.com/vivekpal1" target="_blank" class="border-none! font-300">vivekpal1</a></div>
-  <div i-ri-mastodon-line op50 ma text-xl ml4/>
-  <div><a href="https://fosstodon.org/@vivekpal" target="_blank" class="border-none! font-300">vivekpal</a></div>
   <div i-ri-twitter-line op50 ma text-xl ml4/>
   <div><a href="https://twitter.com/vivekpal0x" target="_blank" class="border-none! font-300">vivekpal0x</a></div>
 </div>
@@ -92,7 +90,6 @@ growSize: 1.5
 ---
 
 ## Virtual Machines
-- Stack Based
 
 ---
 layout: center
@@ -144,30 +141,6 @@ growSize: 1.5
 - WebAssembly (WASM) is a low-level bytecode format designed for efficient execution on the web.
 - x86 and ARM are architectures commonly used in desktop and mobile devices, respectively.
 
-<!-- ## Performance
-- WASM is designed to be fast and efficient, with optimizations for web execution.
-- x86 and ARM are architectures optimized for general-purpose computing.
-
-## Portability
-- WASM is platform-independent and can run on any device with WASM support.
-- x86 and ARM are specific architectures and require different versions of code for compatibility.
-
-## Security
-- WASM runs in a sandboxed environment, providing strong security and isolation for web applications.
-- x86 and ARM architectures are more prone to vulnerabilities due to their broader attack surface.
-
-## Language Support
-- WASM supports multiple languages, allowing developers to write code in their language of choice.
-- x86 and ARM architectures primarily support low-level programming languages like C and assembly.
-
-## Ecosystem
-- WASM has a growing ecosystem with tools, libraries, and frameworks specifically designed for web development.
-- x86 and ARM have well-established ecosystems with extensive support for various operating systems and software.
-
-## Use Cases
-- WASM is widely used for web applications, browser extensions, and cross-platform development.
-- x86 and ARM are commonly used in desktop computers, servers, mobile devices, and embedded systems. -->
-
 ---
 layout: center
 growX: 120
@@ -186,6 +159,47 @@ growY: 60
 growSize: 1.5
 ---
 
+# Stack Machine
+<img src="https://camo.githubusercontent.com/01396fc4531757e1ae5ef00b37bd4a2795e7d1ec2d83d9adbe70161fb7aea8a2/68747470733a2f2f7777772e7475746f7269616c73706f696e742e636f6d2f646174615f737472756374757265735f616c676f726974686d732f696d616765732f737461636b5f726570726573656e746174696f6e2e6a7067" w-80/>
+
+---
+layout: center
+growX: 70
+growY: 100
+growSize: 1.5
+---
+# Why WASM?
+
+---
+layout: center
+growX: 10
+growY: 50
+growSize: 1.5
+---
+
+# WebAssembly in Browsers
+
+---
+layout: center
+growX: 30
+growY: 50
+growSize: 1.5
+---
+
+
+
+# WASM Modules
+- WASM modules are the building blocks of WebAssembly applications.
+- WASM modules are compiled from source code into a binary format that can be executed by a WebAssembly virtual machine.
+
+---
+layout: center
+growX: 120
+growY: 60
+growSize: 1.5
+---
+
+
 # WASI
 - WebAssembly System Interface
 
@@ -201,28 +215,14 @@ growSize: 1.2
 - Linux
 - macOS
 
-# Is WASI a replacement for POSIX?
-- No, WASI is not a replacement for POSIX. It is a complementary interface that can be used alongside POSIX.
-
 ---
 layout: center
-growX: 70
-growY: 100
-growSize: 1.5
+growX: 100
+growY: 50
+growSize: 1.2
 ---
 
-# WASI vs POSIX
-- WASI is a new system interface for WebAssembly.
-- POSIX is an existing system interface for Unix-like operating systems.
-
----
-layout: center
-growX: 15
-growY: 120
-growSize: 2
----
-
-# Infact WASI supports POSIX too
+# Posix-like
 
 ---
 layout: center
@@ -231,8 +231,103 @@ growY: 120
 growSize: 1.5
 ---
 
+# Key Features of WASI
 
+---
+layout: center
+growX: 50
+growY: 120
+growSize: 1.5
+---
 
+# Sandboxed Environment
 
+---
+layout: center
+growX: 50
+growY: 120
+growSize: 1.5
+---
 
+# Building Web Applications with WASI
 
+---
+layout: center
+growX: 50
+growY: 120
+growSize: 1.5
+---
+
+# Rust on the Web
+
+---
+layout: center
+growX: 50
+growY: 120
+growSize: 1.5
+---
+
+# WASI Beyond the Browser
+
+---
+layout: center
+growX: 50
+growY: 120
+growSize: 1.5
+---
+
+# Frameworks and Libraries
+
+---
+layout: center
+growX: 50
+growY: 120
+growSize: 1.5
+---
+
+# Yew
+
+---
+layout: center
+growX: 50
+growY: 120
+growSize: 1.5
+---
+
+# Tauri
+
+---
+layout: center
+growX: 50
+growY: 120
+growSize: 1.5
+---
+
+# SWC Compiler on Next.js 13
+
+---
+layout: center
+growX: 50
+growY: 120
+growSize: 1.5
+---
+
+# Limitations and Future of WASI
+
+---
+layout: center
+growX: 50
+growY: 120
+growSize: 1.5
+---
+
+# Conclusion
+
+---
+layout: center
+growX: 50
+growY: 120
+growSize: 1.5
+---
+
+# Resources
