@@ -224,8 +224,8 @@ growSize: 1
 
 ---
 layout: center
-growX: 60
-growY: 100
+growX: 90
+growY: 30
 growSize: 1
 ---
 
@@ -420,8 +420,17 @@ growSize: 1.5
 
 ---
 layout: center
-growX: 50
-growY: 120
+growX: 100
+growY: 15
+growSize: 1.5
+---
+
+**TypeScript to WebAssembly compiler**
+
+---
+layout: center
+growX: 90
+growY: 150
 growSize: 1.5
 ---
 
@@ -438,8 +447,8 @@ growSize: 1.5
 
 ---
 layout: center
-growX: 50
-growY: 120
+growX: 30
+growY: 100
 growSize: 1.5
 ---
 
@@ -447,8 +456,8 @@ growSize: 1.5
 
 ---
 layout: center
-growX: 50
-growY: 120
+growX: 120
+growY: 60
 growSize: 1.5
 ---
 
@@ -457,7 +466,7 @@ growSize: 1.5
 ---
 layout: center
 growX: 50
-growY: 120
+growY: 100
 growSize: 1.5
 ---
 
@@ -465,8 +474,8 @@ growSize: 1.5
 
 ---
 layout: center
-growX: 50
-growY: 120
+growX: 80
+growY: 40
 growSize: 1.5
 ---
 
@@ -474,8 +483,8 @@ growSize: 1.5
 
 ---
 layout: center
-growX: 50
-growY: 120
+growX: 90
+growY: 15
 growSize: 1.5
 ---
 
