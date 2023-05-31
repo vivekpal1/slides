@@ -429,6 +429,64 @@ growSize: 1.5
 
 ---
 layout: center
+growX: 100
+growY: 15
+growSize: 1.5
+---
+# AssemblyScript that calculates the factorial of a given number
+
+```typescript
+// factorial.as
+
+export function factorial(n: i32): i32 {
+  if (n <= 1) {
+    return 1;
+  }
+  
+  let result: i32 = 1;
+  
+  for (let i: i32 = 2; i <= n; i++) {
+    result *= i;
+  }
+  
+  return result;
+}
+
+```
+
+---
+layout: center
+growX: 100
+growY: 15
+growSize: 1.5
+---
+# Using AssemblyScript module in JavaScript
+```javascript
+
+// main.js
+
+const fs = require('fs');
+const { instantiate } = require('assemblyscript');
+
+// Read the compiled wasm module
+const wasmModule = fs.readFileSync('factorial.wasm');
+
+// Instantiate the wasm module
+instantiate(wasmModule)
+  .then(({ exports }) => {
+    // Call the factorial function
+    const result = exports.factorial(5);
+    console.log(`Factorial of 5: ${result}`);
+  })
+  .catch((error) => {
+    console.error('Error instantiating the wasm module:', error);
+  });
+
+```
+
+
+---
+layout: center
 growX: 90
 growY: 150
 growSize: 1.5
@@ -489,3 +547,5 @@ growSize: 1.5
 ---
 
 # Resources
+**You can find the slides, resources and the code on my GitHub repository:**
+[Github Repository](https://github.com/vivekpal.in/wasi-presentation)
