@@ -549,3 +549,6 @@ growSize: 1.5
 # Resources
 **You can find the slides, resources and the code on my GitHub repository:**
 [https://github.com/vivekpal1/slides/tree/main/my-talks/jsconf-2023](https://github.com/vivekpal1/slides/tree/main/my-talks/jsconf-2023)
+
+**Or Scan the QR Code:**
+<img src="https://raw.githubusercontent.com/vivekpal1/slides/main/my-talks/jsconf-2023/qr-code.png" w-40/>

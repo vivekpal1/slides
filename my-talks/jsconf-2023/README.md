@@ -4,7 +4,8 @@
 
 ## Resources
 
-- [Slides](https://vivekpal.in/talks/jsconf-2023)
+- [Slides](https://talks.vivekpal.in/jsconf-2023)
+
 - [WASI](https://wasi.dev)
 - [WASI Polyfill](https://wasi.dev/polyfill)
 - [WASI on the Web](https://wasi.dev/polyfill/what-is-wasi)
