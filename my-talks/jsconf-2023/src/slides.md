@@ -548,4 +548,4 @@ growSize: 1.5
 
 # Resources
 **You can find the slides, resources and the code on my GitHub repository:**
-[Github Repository](https://github.com/vivekpal.in/wasi-presentation)
+[https://github.com/vivekpal1/slides/tree/main/my-talks/jsconf-2023](https://github.com/vivekpal1/slides/tree/main/my-talks/jsconf-2023)
