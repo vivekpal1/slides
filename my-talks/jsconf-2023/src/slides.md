@@ -119,7 +119,7 @@ growY: 80
 growSize: 1.5
 ---
 
-<img src="https://miro.medium.com/v2/resize:fit:1400/1*dS6qiwOSK3_o3J5G8Rh8ew.png" w-80/>
+<img src="https://raw.githubusercontent.com/vivekpal1/slides/main/my-talks/jsconf-2023/src/public/wasm-203.png" w-120/>
 
 
 ---
@@ -147,7 +147,7 @@ growSize: 1.5
 
 ---
 
-<div v-click transition-all duration-500 :class="$slidev.nav.clicks === 0 ? 'op0' : $slidev.nav.clicks > 1 ? 'op50 text-2xl' : 'translate-y-10 text-4xl'">Why WASM?</div>
+<div v-click transition-all duration-500 :class="$slidev.nav.clicks === 0 ? 'op0' : $slidev.nav.clicks > 1 ? 'op50 text-2xl' : 'translate-y-10 text-4xl'">Why WebAssembly?</div>
 
 <div class="nuxt-devtools-logo" v-click>
   <NuxtDevTools h-20/>
@@ -155,7 +155,7 @@ growSize: 1.5
 
 ---
 
-<div ml-14 text-lg op50 mb--4>Why WASM</div>
+<div ml-14 text-lg op50 mb--4>Why WebAssembly?</div>
 <h1><NuxtDevTools h-15/></h1>
 
 <div text-2xl>
@@ -213,11 +213,60 @@ growSize: 1.5
 </v-clicks>
 </div>
 
+---
+layout: center
+growX: 60
+growY: 100
+growSize: 1
+---
 
+# WebAssembly Modules
 
-# WASM Modules
-- WASM modules are the building blocks of WebAssembly applications.
-- WASM modules are compiled from source code into a binary format that can be executed by a WebAssembly virtual machine.
+---
+layout: center
+growX: 60
+growY: 100
+growSize: 1
+---
+
+**WebAssembly modules are the building blocks of WebAssembly applications.**
+
+---
+layout: center
+growX: 60
+growY: 100
+growSize: 1
+---
+
+WebAssembly modules are compiled from source code into a binary format that can be executed by a WebAssembly virtual machine.
+
+---
+
+# WebAssembly Modules in JavaScript
+
+```javascript
+fetch('module.wasm')
+  .then(response => response.arrayBuffer())
+  .then(buffer => WebAssembly.instantiate(buffer))
+  .then(module => {
+    const { add, memory } = module.instance.exports;
+    const result = add(5, 3);
+    console.log('Result:', result);
+    const buffer = new Uint8Array(memory.buffer);
+    buffer[0] = 42;
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+```
+
+---
+layout: center
+growX: 120
+growY: 60
+growSize: 1.5
+---
+  <img src="https://wasi.dev/polyfill/WASI-small.png" w-60/>
 
 ---
 layout: center
@@ -226,9 +275,17 @@ growY: 60
 growSize: 1.5
 ---
 
-
 # WASI
 - WebAssembly System Interface
+
+---
+layout: center
+growX: 80
+growY: 15
+growSize: 1.2
+---
+
+**Standardized set of APIs that allows WebAssembly modules to interact with the host operating system and its resources in a platform-agnostic manner.**
 
 ---
 layout: center
@@ -249,7 +306,7 @@ growY: 50
 growSize: 1.2
 ---
 
-# Posix-like
+# Inspired by POSIX
 
 ---
 layout: center
@@ -258,7 +315,90 @@ growY: 120
 growSize: 1.5
 ---
 
-# Key Features of WASI
+---
+
+<div v-click transition-all duration-500 :class="$slidev.nav.clicks === 0 ? 'op0' : $slidev.nav.clicks > 1 ? 'op50 text-2xl' : 'translate-y-10 text-4xl'">Key-Features of WASI</div>
+
+<div class="nuxt-devtools-logo" v-click>
+  <NuxtDevTools h-20/>
+</div>
+
+---
+
+<div ml-14 text-lg op50 mb--4>Key-Features of WASI</div>
+<h1><NuxtDevTools h-15/></h1>
+
+<div text-2xl>
+<v-clicks>
+
+<div flex="~ gap2">
+Sandboxed Environment
+</div>
+
+<div flex="~ gap2">
+Standardized APIs
+</div>
+
+<div flex="~ gap2">
+Minimalistic Interface
+</div>
+
+<div flex="~ gap2">
+Isolation and Safety
+</div>
+<div flex="~ gap2">
+Platform Agnostic
+</div>
+<div flex="~ gap2">
+Interoperability
+</div>
+<div flex="~ gap2">
+Future-Proof
+</div>
+
+</v-clicks>
+</div>
+
+---
+
+<div v-click transition-all duration-500 :class="$slidev.nav.clicks === 0 ? 'op0' : $slidev.nav.clicks > 1 ? 'op50 text-2xl' : 'translate-y-10 text-4xl'">Building Web Applications with WASI</div>
+
+<div class="nuxt-devtools-logo" v-click>
+  <NuxtDevTools h-20/>
+</div>
+
+---
+
+<div ml-14 text-lg op50 mb--4>Building Web Applications with WASI</div>
+<h1><NuxtDevTools h-15/></h1>
+
+<div text-2xl>
+<v-clicks>
+
+<div flex="~ gap2">
+File System Operations
+</div>
+
+<div flex="~ gap2">
+Networking
+</div>
+
+<div flex="~ gap2">
+System Integration
+</div>
+
+<div flex="~ gap2">
+Database Access
+</div>
+<div flex="~ gap2">
+Secure Cryptography
+</div>
+<div flex="~ gap2">
+Command-Line Tools
+</div>
+
+</v-clicks>
+</div>
 
 ---
 layout: center
@@ -267,25 +407,7 @@ growY: 120
 growSize: 1.5
 ---
 
-# Sandboxed Environment
-
----
-layout: center
-growX: 50
-growY: 120
-growSize: 1.5
----
-
-# Building Web Applications with WASI
-
----
-layout: center
-growX: 50
-growY: 120
-growSize: 1.5
----
-
-# Rust on the Web
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/AssemblyScript_logo_2020.svg/1200px-AssemblyScript_logo_2020.svg.png" w-60/>
 
 ---
 layout: center
@@ -295,15 +417,6 @@ growSize: 1.5
 ---
 
 # AssemblyScript
-
----
-layout: center
-growX: 50
-growY: 120
-growSize: 1.5
----
-
-# WASI Beyond the Browser
 
 ---
 layout: center
