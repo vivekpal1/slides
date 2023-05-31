@@ -551,4 +551,4 @@ growSize: 1.5
 [https://github.com/vivekpal1/slides/tree/main/my-talks/jsconf-2023](https://github.com/vivekpal1/slides/tree/main/my-talks/jsconf-2023)
 
 **Or Scan the QR Code:**
-<img src="https://raw.githubusercontent.com/vivekpal1/slides/main/my-talks/jsconf-2023/qr-code.png" w-40/>
+<img src="https://raw.githubusercontent.com/vivekpal1/slides/main/my-talks/jsconf-2023/src/public/qr.png" w-60/>
