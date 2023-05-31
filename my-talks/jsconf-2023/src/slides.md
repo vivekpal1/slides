@@ -58,66 +58,49 @@ growSize: 1.5
 
 <img src="https://raw.githubusercontent.com/ShastraOS/site/main/public/icons/text.png" w-80/>
 
----
-layout: center
-growX: 5
-growY: 12
-growSize: 1
+
 ---
 
-#
+<div v-click transition-all duration-500 :class="$slidev.nav.clicks === 0 ? 'op0' : $slidev.nav.clicks > 1 ? 'op50 text-2xl' : 'translate-y-10 text-4xl'">Today's Agenda</div>
 
-<div flex="~ gap-2 items-center">
-  <div i-ri-hello-fill text-6xl/>
-  <div text-6xl font-bold>Today's Agenda</div>
-  <div i-ri-vercel-fill text-6xl/>
+<div class="nuxt-devtools-logo" v-click>
+  <NuxtDevTools h-20/>
+</div>
+
+---
+
+<div ml-14 text-lg op50 mb--4>Today's Agenda</div>
+<h1><NuxtDevTools h-15/></h1>
+
+<div text-2xl>
+<v-clicks>
+
+<div flex="~ gap2">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/WebAssembly_Logo.svg/1200px-WebAssembly_Logo.svg.png" w-20/>
+</div>
+
+<div flex="~ gap2">
+  <img src="https://wasi.dev/polyfill/WASI-small.png" w-40/>
+</div>
+
+<div flex="~ gap2">
+  <img src="https://i.ibb.co/ZXBL1sb/removal-ai-85f8d262-2c8b-442a-a831-117f9f1b80d4.png" w-40/>
+</div>
+
+<div flex="~ gap2">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/AssemblyScript_logo_2020.svg/1200px-AssemblyScript_logo_2020.svg.png" w-20/>
+</div>
+
+</v-clicks>
 </div>
 
 ---
 layout: center
-growX: 45
-growY: 15
-growSize: 2
----
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/WebAssembly_Logo.svg/1200px-WebAssembly_Logo.svg.png" w-40/>
-
----
-layout: center
-growX: 90
-growY: 120
+growX: 60
+growY: 100
 growSize: 1.5
 ---
-
-## Virtual Machines
-
----
-layout: center
-growX: 90
-growY: 130
-growSize: 1.5
----
-
-<img src="https://wasi.dev/polyfill/WASI-small.png" w-60/>
-
----
-layout: center
-growX: 15
-growY: 60
-growSize: 1
----
-
-<img src="https://i.ibb.co/ZXBL1sb/removal-ai-85f8d262-2c8b-442a-a831-117f9f1b80d4.png" w-80/>
-
-
----
-layout: center
-growX: 100
-growY: 10
-growSize: 1.5
----
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/AssemblyScript_logo_2020.svg/1200px-AssemblyScript_logo_2020.svg.png" w-40/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/WebAssembly_Logo.svg/1200px-WebAssembly_Logo.svg.png" w-50/>
 
 ---
 layout: center
@@ -136,10 +119,8 @@ growY: 80
 growSize: 1.5
 ---
 
-# WASM vs x86 & ARM
+<img src="https://miro.medium.com/v2/resize:fit:1400/1*dS6qiwOSK3_o3J5G8Rh8ew.png" w-80/>
 
-- WebAssembly (WASM) is a low-level bytecode format designed for efficient execution on the web.
-- x86 and ARM are architectures commonly used in desktop and mobile devices, respectively.
 
 ---
 layout: center
@@ -162,29 +143,75 @@ growSize: 1.5
 # Stack Machine
 <img src="https://camo.githubusercontent.com/01396fc4531757e1ae5ef00b37bd4a2795e7d1ec2d83d9adbe70161fb7aea8a2/68747470733a2f2f7777772e7475746f7269616c73706f696e742e636f6d2f646174615f737472756374757265735f616c676f726974686d732f696d616765732f737461636b5f726570726573656e746174696f6e2e6a7067" w-80/>
 
----
-layout: center
-growX: 70
-growY: 100
-growSize: 1.5
----
-# Why WASM?
+
 
 ---
-layout: center
-growX: 10
-growY: 50
-growSize: 1.5
+
+<div v-click transition-all duration-500 :class="$slidev.nav.clicks === 0 ? 'op0' : $slidev.nav.clicks > 1 ? 'op50 text-2xl' : 'translate-y-10 text-4xl'">Why WASM?</div>
+
+<div class="nuxt-devtools-logo" v-click>
+  <NuxtDevTools h-20/>
+</div>
+
 ---
 
-# WebAssembly in Browsers
+<div ml-14 text-lg op50 mb--4>Why WASM</div>
+<h1><NuxtDevTools h-15/></h1>
+
+<div text-2xl>
+<v-clicks>
+
+- ## **Performance**
+
+- ## **Cross-platform Compatibility**
+
+- ## **Language Agnostic**
+
+- ## **Security**
+
+- ## **Interoperability**
+
+- ## **Broad Industry Support**
+
+- ## **Community and Ecosystem**
+
+</v-clicks>
+</div>
 
 ---
-layout: center
-growX: 30
-growY: 50
-growSize: 1.5
+
+<div v-click transition-all duration-500 :class="$slidev.nav.clicks === 0 ? 'op0' : $slidev.nav.clicks > 1 ? 'op50 text-2xl' : 'translate-y-10 text-4xl'">WebAssembly in Browsers</div>
+
+<div class="nuxt-devtools-logo" v-click>
+  <NuxtDevTools h-20/>
+</div>
+
 ---
+
+<div ml-14 text-lg op50 mb--4>WebAssembly in Browsers</div>
+<h1><NuxtDevTools h-15/></h1>
+
+<div text-2xl>
+<v-clicks>
+
+<div flex="~ gap2">
+  <img src="https://webassembly.org/images/firefox.svg" w-20/>
+</div>
+
+<div flex="~ gap2">
+  <img src="https://webassembly.org/images/chrome.svg" w-20/>
+</div>
+
+<div flex="~ gap2">
+  <img src="https://webassembly.org/images/safari.svg" w-20/>
+</div>
+
+<div flex="~ gap2">
+  <img src="https://webassembly.org/images/edge.svg" w-20/>
+</div>
+
+</v-clicks>
+</div>
 
 
 
