@@ -8,9 +8,8 @@
 
 - [WASI](https://wasi.dev)
 - [WASI Polyfill](https://wasi.dev/polyfill)
-- [WASI on the Web](https://wasi.dev/polyfill/what-is-wasi)
-- [WASI on the Web: WASI Polyfill](https://wasi.dev/polyfill)
 - [WASM](https://webassembly.org)
 - [WASMTIME](https://wasmtime.dev)
+- [AssemblyScript](https://www.assemblyscript.org/introduction.html)
 
 

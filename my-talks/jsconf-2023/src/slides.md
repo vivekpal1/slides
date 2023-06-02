@@ -306,7 +306,7 @@ growY: 50
 growSize: 1.2
 ---
 
-# Inspired by POSIX
+# This interface is POSIX
 
 ---
 layout: center
@@ -417,7 +417,6 @@ growSize: 1.5
 ---
 
 # AssemblyScript
-
 ---
 layout: center
 growX: 100
@@ -433,6 +432,7 @@ growX: 100
 growY: 15
 growSize: 1.5
 ---
+
 # AssemblyScript that calculates the factorial of a given number
 
 ```typescript
@@ -460,7 +460,9 @@ growX: 100
 growY: 15
 growSize: 1.5
 ---
+
 # Using AssemblyScript module in JavaScript
+
 ```javascript
 
 // main.js
@@ -484,15 +486,55 @@ instantiate(wasmModule)
 
 ```
 
+---
+layout: center
+growX: 90
+growY: 120
+growSize: 1.5
+---
+
+**Memory can be accessed using built-in functions that compile to WebAssembly instructions directly.**
+  
+```typescript
+store<i32>(ptr, load<i32>(ptr) + load<i32>(ptr, 4), 8)
+```
 
 ---
 layout: center
 growX: 90
-growY: 150
+growY: 120
 growSize: 1.5
 ---
 
-# Frameworks and Libraries
+For comparison, the following C code is roughly equivalent:
+
+```c
+*(ptr + 2) = *ptr + *(ptr + 1)
+```
+
+---
+layout: center
+growX: 90
+growY: 120
+growSize: 1.5
+---
+
+Most WebAssembly instructions can also be written directly in AssemblyScript code, with generic variants available as well:
+
+```typescript
+i32.ctz(...)             // ctz<i32>(...)
+f64.reinterpret_i64(...) // reinterpret<f64>(...)
+i64.load32_u(...)        // <i64>load<u32>(...)
+```
+
+---
+layout: center
+growX: 120
+growY: 90
+growSize: 1.5
+---
+
+# Some Cool implementations for Web
 
 ---
 layout: center
@@ -501,25 +543,7 @@ growY: 120
 growSize: 1.5
 ---
 
-# Yew
-
----
-layout: center
-growX: 30
-growY: 100
-growSize: 1.5
----
-
-# Tauri
-
----
-layout: center
-growX: 120
-growY: 60
-growSize: 1.5
----
-
-# SWC Compiler on Next.js 13
+# SWC Compiler
 
 ---
 layout: center
@@ -547,8 +571,13 @@ growSize: 1.5
 ---
 
 # Resources
+
 **You can find the slides, resources and the code on my GitHub repository:**
 [https://github.com/vivekpal1/slides/tree/main/my-talks/jsconf-2023](https://github.com/vivekpal1/slides/tree/main/my-talks/jsconf-2023)
 
 **Or Scan the QR Code:**
 <img src="https://raw.githubusercontent.com/vivekpal1/slides/main/my-talks/jsconf-2023/src/public/qr.png" w-60/>
+
+---
+layout: center
+---
