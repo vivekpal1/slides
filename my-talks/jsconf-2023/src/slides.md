@@ -119,7 +119,7 @@ growY: 80
 growSize: 1.5
 ---
 
-<img src="https://raw.githubusercontent.com/vivekpal1/slides/main/my-talks/jsconf-2023/src/public/wasm-203.png" w-120/>
+<img src="https://raw.githubusercontent.com/vivekpal1/slides/main/my-talks/jsconf-2023/src/public/wasm-203.png" w-150/>
 
 
 ---
@@ -287,26 +287,24 @@ growSize: 1.2
 
 **Standardized set of APIs that allows WebAssembly modules to interact with the host operating system and its resources in a platform-agnostic manner.**
 
+
 ---
 layout: center
-growX: 80
+growX: 50
 growY: 120
-growSize: 1.2
+growSize: 1.5
 ---
 
-# System Interface
-- POSIX
-- Linux
-- macOS
+<div ml-14 text-lg op50 mb--4>Portablity</div>
+<h1><NuxtDevTools h-15/></h1>
 
----
-layout: center
-growX: 100
-growY: 50
-growSize: 1.2
----
+<div text-2xl>
 
-# This interface is POSIX
+<div flex="~ gap2">
+ <img src="https://hacks.mozilla.org/files/2019/03/04-02-portability-1-500x484.png" w-100/>
+</div>
+
+</div>
 
 ---
 layout: center
@@ -486,46 +484,6 @@ instantiate(wasmModule)
 
 ```
 
----
-layout: center
-growX: 90
-growY: 120
-growSize: 1.5
----
-
-**Memory can be accessed using built-in functions that compile to WebAssembly instructions directly.**
-  
-```typescript
-store<i32>(ptr, load<i32>(ptr) + load<i32>(ptr, 4), 8)
-```
-
----
-layout: center
-growX: 90
-growY: 120
-growSize: 1.5
----
-
-For comparison, the following C code is roughly equivalent:
-
-```c
-*(ptr + 2) = *ptr + *(ptr + 1)
-```
-
----
-layout: center
-growX: 90
-growY: 120
-growSize: 1.5
----
-
-Most WebAssembly instructions can also be written directly in AssemblyScript code, with generic variants available as well:
-
-```typescript
-i32.ctz(...)             // ctz<i32>(...)
-f64.reinterpret_i64(...) // reinterpret<f64>(...)
-i64.load32_u(...)        // <i64>load<u32>(...)
-```
 
 ---
 layout: center
@@ -534,12 +492,21 @@ growY: 90
 growSize: 1.5
 ---
 
-# Some Cool implementations for Web
+# Some cool use cases for WebAssembly
 
 ---
 layout: center
 growX: 50
 growY: 120
+growSize: 1.5
+---
+
+# SWC Compiler
+
+---
+layout: center
+growX: 50
+growY: 100
 growSize: 1.5
 ---
 
