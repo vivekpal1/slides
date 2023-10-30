@@ -17,9 +17,6 @@ importers:
       '@slidev/theme-seriph':
         specifier: ^0.21.3
         version: 0.21.3
-      '@slidev/types':
-        specifier: ^0.43.12
-        version: 0.43.12
     devDependencies:
       '@iconify/json':
         specifier: ^2.2.135
