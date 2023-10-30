@@ -1,0 +1,5 @@
+packages:
+  - '*/src'
+  - '*/jsconf-2023'
+  - '*/202305-foss-united'
+  - '*/themes'
