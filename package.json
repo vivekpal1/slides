@@ -6,15 +6,16 @@
     "preview": "serve dist"
   },
   "dependencies": {
-    "@slidev/cli": "^0.37.1",
+    "@slidev/cli": "^0.43.12",
     "@slidev/theme-default": "^0.21.2",
-    "@slidev/theme-seriph": "^0.21.3"
+    "@slidev/theme-seriph": "^0.21.3",
+    "@slidev/types": "^0.43.12"
   },
   "devDependencies": {
-    "@iconify/json": "^2.1.150",
-    "playwright-chromium": "^1.28.1",
+    "@iconify/json": "^2.2.135",
+    "playwright-chromium": "^1.39.0",
     "rimraf": "^3.0.2",
-    "serve": "^14.1.2",
-    "unocss": "^0.47.5"
+    "serve": "^14.2.1",
+    "unocss": "^0.47.6"
   }
 }
