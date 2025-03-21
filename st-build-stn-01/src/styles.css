@@ -1,0 +1,119 @@
+/* .slidev-code {
+  font-size: 1em !important;
+  line-height: 1.4em !important;
+} */
+
+h6 {
+  text-transform: initial !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+}
+
+.dark #slide-content {
+  background-color: rgb(20, 36, 28) !important;
+}
+
+/* Transitions */
+.slidev-vclick-target {
+  transition: opacity 400ms ease;
+}
+
+.slidev-vclick-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* DevTools Logo Animation */
+.nuxt-devtools-logo.slidev-vclick-target {
+  transition: all 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-delay: 500ms;
+}
+.nuxt-devtools-logo.slidev-vclick-hidden {
+  transform: scale(0.2);
+}
+
+iframe {
+  background: black;
+}
+
+/* Base Styles */
+:root {
+  --solana-purple: #9945FF;
+  --solana-blue: #14F195;
+  --solana-cyan: #00C2FF;
+  --solana-pink: #F338C3;
+}
+
+/* Light Theme by Default */
+html:not(.dark) {
+  --slidev-theme-primary: var(--solana-purple);
+  color-scheme: light;
+}
+
+/* Background Animation */
+.slidev-layout {
+  background: linear-gradient(-45deg, #f8fafc, #e2e8f0, #e0f2fe, #f3e8ff);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  color: #334155;
+}
+
+/* Animation Keyframes */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Solana Gradient Text */
+.solana-gradient {
+  background: linear-gradient(90deg, var(--solana-purple), var(--solana-cyan));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: background-pan 3s ease infinite;
+}
+
+/* Floating Animation */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes background-pan {
+  from {
+    background-position: 0% center;
+  }
+  to {
+    background-position: -200% center;
+  }
+}
+
+/* Card Styling */
+.card-solana {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+}
+
+.card-solana:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}

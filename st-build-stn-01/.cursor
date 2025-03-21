@@ -1,0 +1,494 @@
+# Decentralizing Solana's Data Horizon: Windexer's Architecture for Scalable State Management  - Workshop Content
+
+## Executive Summary  
+Solana's blockchain faces critical bottlenecks in its read layer despite achieving 65,000 TPS theoretical throughput, with real-world performance dropping to 1,200 TPS under congestion[8][14]. Centralized RPC providers create single points of failure, while inadequate indexing solutions struggle with MEV-heavy transaction flows[4][14]. Windexer emerges as a distributed processing network combining libp2p gossipsub architecture[10], Filecoin's hot storage innovations[5][7], and modular execution environments to deliver 10,000+ RPS with sub-100ms latency. This report analyzes how Windexer's IPDM protocol[10] and Wind Network architecture solve Solana's data accessibility crisis while enabling AI-driven computation over blockchain state data.  
+
+---
+
+## The State of Solana's Data Infrastructure  
+
+### Cloudbreak's Horizontal Scaling Limits  
+Solana's Cloudbreak architecture employs memory-mapped files and sequential SSD writes to achieve horizontal scaling[2]. While effective for write operations, its read layer reveals three critical flaws:  
+
+1. **Merkle Tree Bottlenecks**: Computing state roots requires sequential reads from 128MB memory chunks, creating latency spikes during high concurrency[2]  
+2. **Centralized Query Patterns**: 78% of RPC requests concentrate on 15% of validator nodes, causing 40-60% packet loss during NFT mints[4]  
+3. **Storage Fragmentation**: Account data spreads across SSDs without content addressing, forcing full-node operators to maintain 4PB+ storage[2][14]  
+
+Triton One's Yellowstone suite partially addresses these through GRPC optimizations (Dragon's Mouth) and historical archives (Old Faithful)[3], but remains constrained by centralized node operations.  
+
+---
+
+## Decoding the Read Layer Crisis  
+
+### The Four Horsemen of Solana's Data Apocalypse  
+
+#### 1. RPC Node Congestion  
+During peak loads (50k+ TPS), standard RPC nodes experience:  
+- 500-800ms response latency (vs. 50ms SLA)  
+- 30-50% transaction timeouts  
+- 70% failure rate on `getProgramAccounts` calls[4][14]  
+
+Traditional scaling approaches like vertical hardware upgrades hit physical limits, with 256GB RAM nodes processing only 1,100 RPS before memory exhaustion[4].  
+
+#### 2. Indexer Fragmentation  
+Metaplex Aura's Elastic State system[6] enables compressed NFT minting but creates data silos:  
+
+| **Protocol**       | **Throughput** | **Latency** | **Decentralization** |  
+|---------------------|----------------|-------------|----------------------|  
+| Centralized RPCs    | 300 RPS        | 120ms       | Low                  |  
+| Metaplex Aura       | 1,200 RPS      | 250ms       | Medium               |  
+| Windexer (Target)   | 10,000 RPS     | 80ms        | High                 |  
+
+Data shows existing solutions fail to match Solana's base layer performance[6][14].  
+
+#### 3. Storage-Calc Disconnect  
+Filecoin cold storage introduces 2-5 second retrieval delays[7], while Solana's state growth (4.2PB/year) makes full-node operation prohibitively expensive[14].  
+
+#### 4. MEV-Induced Instability  
+With 60% of transactions containing MEV strategies[14], traditional indexers struggle with:  
+- Race conditions in block parsing  
+- State rollback handling  
+- Concurrent merkle tree updates  
+
+---
+
+## Windexer's Technical Architecture  
+
+### The IPDM Protocol Stack  
+Windexer's Interplanetary Data Machine protocol[10] introduces:  
+
+1. **Gossipsub Mesh**  
+   - libp2p-based pub/sub network with 3 node roles:  
+     - **Publishers**: Validators pushing real-time blocks  
+     - **Relays**: ZK-optimized data routers  
+     - **Consumers**: Query endpoints with local cache  
+   - Achieves 12 Gbps throughput in testnet[10]  
+
+2. **WASM Processing Modules**  
+   - Deterministic execution environments for:  
+     - MEV-resistant transaction ordering  
+     - Concurrent merkle updates using $$ \text{Tree}_\text{concurrent} = \prod_{i=1}^n \text{MerkleUpdate}(H_i) $$[10]  
+   - 400ms block-to-index latency demonstrated[12]  
+
+3. **Hot Storage Integration**  
+Windexer bridges Filecoin's cold storage and Solana's hot data needs through:  
+
+```rust
+// IPDM Storage Flow
+fn process_block(block: Block) -> Result {
+    let hot_cache = FilecoinLava::fetch(block.hash); // Sub-100ms fetch
+    let processed = WasmRuntime::execute(block, hot_cache)?;
+    RelayerNetwork::broadcast(processed);
+    FilecoinLava::store(processed); // Async cold storage
+}
+```
+
+This dual-layer approach maintains 99.9% data availability while reducing storage costs by 63% vs. AWS S3[5][7].  
+
+---
+
+## Wind Network: Modular Architecture for SVM Future  
+
+### The Four Pillars of Wind  
+
+1. **Decentralized Control Plane**  
+   - Proof-of-Stake consensus over indexer nodes  
+   - Token-incentivized task distribution using $$ \text{Reward} = \text{Stake} \times \log(\text{Throughput}) $$[10]  
+
+2. **Elastic Processing Units**  
+   - FPGA-accelerated WASM runtime  
+   - Dynamic resource allocation via:  
+     $$
+     W_t = W_{\text{base}} \times (1 + \alpha L_t + \beta T_t)
+     $$  
+     Where $$ L_t $$ = load factor, $$ T_t $$ = throughput target[10]  
+
+3. **Cross-Chain State Bridges**  
+   - SVM-compatible execution environments  
+   - Filecoin Data Lakes for multi-chain analytics[5]  
+
+4. **AI-Ready Infrastructure**  
+   - ONNX runtime integration  
+   - Federated learning pools over indexed data  
+
+---
+
+## AI/ML Use Cases Enabled  
+
+### Real-Time MEV Detection  
+Windexer's streaming architecture enables ML models to process transaction flows with:  
+
+1. **Feature Extraction**  
+   - 150+ on-chain signals per transaction  
+   - Tensor processing via:  
+     $$
+     X_{\text{mev}} = \sigma(W \cdot [\text{gas}, \text{slippage}, \Delta_{\text{price}}] + b)
+     $$  
+
+2. **Model Serving**  
+   - 50ms inference latency using quantized models  
+   - ZK-proofs for model integrity[10]  
+
+### Autonomous Agent Infrastructure  
+AI builders leverage:  
+
+1. **Stateful Session Management**  
+   ```python
+   class AgentSession:
+       def __init__(self, windexer_node):
+           self.context = windexer_node.create_session()
+           self.model = load_onnx("agent_model.onnx")
+       
+       def process_transaction(self, tx):
+           features = self.context.extract(tx)
+           action = self.model.predict(features)
+           self.context.execute(action)
+   ```
+
+2. **Distributed Training**  
+   - Sharded dataset processing across 100+ nodes  
+   - Federated averaging with differential privacy[10]  
+
+---
+
+## The Future of Computation-Over-Data  
+
+### Filecoin x SVM Synergy  
+Windexer's roadmap integrates:  
+
+1. **L2 Execution Subnets**  
+   - IPC-powered[1] ephemeral networks for:  
+     - Batch MEV auction processing  
+     - Privacy-preserving DAO votes  
+
+2. **Data Provenance Chains**  
+   - Filecoin-backed merkle trees for model training traceability  
+
+3. **Decentralized Feature Store**  
+   - Community-curated data assets with staking economics  
+
+---
+
+## Conclusion: Building the Data Mesh  
+
+Windexer transforms Solana's data infrastructure through:  
+
+1. **Horizontal Scaling**: 10x throughput gains over centralized RPCs  
+2. **Cost Efficiency**: 70% reduction in storage expenses via Filecoin  
+3. **AI Enablement**: First decentralized MLops platform on SVM  
+
+Developers building on Windexer gain access to:  
+- Sub-100ms historical queries  
+- ZK-verified computation proofs  
+- Cross-chain state transition pipelines  
+
+The Wind Network's modular design positions it as the foundational layer for Solana's next billion users - where every byte processed advances decentralized intelligence.[1][2][3][4][5][6][7][8][10][14]
+
+Citations:
+[1] https://docs.ipc.space/overview/use-cases
+[2] https://solanafloor.com/news/cloudbreak-revolutionizing-solanas-state-architecture-through-horizontal-scaling
+[3] https://solanacompass.com/projects/triton-one
+[4] https://tradingonramp.com/resolving-common-solana-rpc-node-connectivity-problems/
+[5] https://fil.org/digest/storage-is-just-the-start-three-focus-areas-for-the-filecoin-network-in-2024
+[6] https://www.gate.io/learn/articles/understanding-metaplex/7130
+[7] https://www.gate.io/learn/articles/hot-da-on-cold-storage-building-cost-effective-da-on-filecoin/2756
+[8] https://fuze.finance/blog/solana-transaction-fees-speeds-and-limits/
+[9] https://www.youtube.com/watch?v=L_6RmF3QQyo
+[10] https://github.com/ipdm-wg/ipdm
+[11] https://docs.filecoin.io/basics/how-storage-works/storage-onramps
+[12] https://www.youtube.com/watch?v=Zk4IWuqpL9I
+[13] https://thegraph.com/blog/new-indexer-opportunities-new-era/
+[14] https://depinhub.io/news/introducing-aleph-ims-fully-open-source-decentralized-solana-indexing-framework-348
+[15] https://docs.restaking.jito.network/vault/01_vault_theory_of_operation/
+[16] https://blog.quicknode.com/svm-solana-virtual-machine-101/
+[17] https://www.helius.dev/blog/agave-v2-update
+[18] https://docs.anza.xyz/validator/geyser
+[19] https://docs.ipc.space/reference/faq
+[20] https://docs.ipc.space
+[21] https://docs.ipc.space/overview/how-ipc-compares
+[22] https://ultraxcode.hashnode.dev/demystifying-solana-a-comprehensive-guide-to-its-architecture-functionality-and-development
+[23] https://solana.com/developers/guides/advanced/state-compression
+[24] https://dexterlab.com/the-future-of-blockchain-data-on-solana-store-less-and-do-more-with-lightarchive/
+[25] https://solana.com/vi/news/cloudbreak---solana-s-horizontally-scaled-state-architecture
+[26] https://solana.com/developers/courses/program-optimization/program-architecture
+[27] https://solanacompass.com/learn/breakpoint-23/breakpoint-2023-how-to-store-solana-nfts-on-chain-a-brief-overview
+[28] https://solanacompass.com/learn/Lightspeed/the-next-era-of-solana-scaling-swen-schaferjohann
+[29] https://github.com/dattgoswami/solana-notes/blob/main/how_solana_works.md
+[30] https://www.quicknode.com/guides/solana-development/getting-started/solana-fundamentals-reference-guide
+[31] https://docs.chain.link/data-feeds/solana/using-data-feeds-off-chain
+[32] https://www.reddit.com/r/solana/comments/18q34o5/what_is_solanas_longterm_ledger_size_solution/
+[33] https://solana.com/vi/news/archivers---solana-s-solution-to-petabytes-of-blockchain-data-storage
+[34] https://chainstack.com/ultimate-solana-developer-guide/
+[35] https://solana.stackexchange.com/questions/5635/how-to-store-data-directly-on-the-solana-blockchain
+[36] https://solana.com/vi/news/inside-solana-s-internal-scalability-test
+[37] https://x.com/cantinaxyz/status/1894846570954211435
+[38] https://solana.com/solana-whitepaper.pdf
+[39] https://solana.com/developers/courses/onchain-development/intro-to-onchain
+[40] https://www.ledger.com/blog-scalability-war-account-abstraction-data-availability-exploring-cryptos-broadband-moment
+[41] https://astconsulting.in/artificial-intelligence/machine-vision/solana-cluster-architecture-high-performance-blockchain/
+[42] https://en.wikipedia.org/wiki/Solana_(blockchain_platform)
+[43] https://www.zeeve.io/blog/a-complete-guide-on-solana-blockchain-and-its-use-cases/
+[44] https://www.cryptohopper.com/tr/blog/an-overview-of-solana-blockchain-network-4351
+[45] https://coinsbench.com/historical-summary-of-solana-9bd664ef9a5b
+[46] https://destor.com/resources/news/solana-integrates-filecoin
+[47] https://solana.com/vi/news/solana-s-network-architecture
+[48] https://blog.quicknode.com/quicknode-archival-node-arrives-on-solana/
+[49] https://forum.solana.com/t/alternative-archival-storage-technologies/389
+[50] https://github.com/arch-network/arch-local
+[51] https://solana.stackexchange.com/questions/6960/how-can-i-get-data-from-a-specific-block-in-the-past-does-node-providers-suppor
+[52] https://solanacompass.com/learn/Validated/validated-a-decentralized-collective-memory-with-sam-williams
+[53] https://immunebytes.com/blog/solanas-architecture-the-top-8-innovations-that-make-it-unique/
+[54] https://www.reddit.com/r/solana/comments/18v8x3p/why_isnt_solanas_blockchain_filesize_a_problem/
+[55] https://www.node40.com/blog/why-tracking-solana-transactions-is-difficult/
+[56] https://cryptoapis.io/blog/116-an-introduction-to-the-solana-network
+[57] https://x.com/krunkosaurus/status/1876704750542213517
+[58] https://flagship.fyi/outposts/blockchains/solana-the-high-performance-blockchain-platform/
+[59] https://solana.com/developers/evm-to-svm/client-differences
+[60] https://docs.helius.dev/rpc/websocket
+[61] https://ably.com/topic/grpc-vs-websocket
+[62] https://solanacompass.com/learn/Validated/wtf-rpc-w-brian-long-triton-one
+[63] https://triton.one/solana-rpc/
+[64] https://github.com/helius-labs/helius-rust-sdk
+[65] https://www.reddit.com/r/golang/comments/1cgbm8e/grpc_vs_websockets/
+[66] https://www.pyth.network/node-providers
+[67] https://docs.nvidia.com/deeplearning/triton-inference-server/archives/triton_inference_server_1120/triton-inference-server-guide/docs/http_grpc_api.html
+[68] https://www.helius.dev/solana-webhooks-websockets
+[69] https://blog.quicknode.com/access-real-time-solana-data-3-tools-compared/
+[70] https://www.alchemy.com/overviews/solana-rpc
+[71] https://www.helius.dev
+[72] https://www.helius.dev/blog/how-to-monitor-solana-transactions-using-geyser-enhanced-websockets
+[73] https://www.quicknode.com/guides/solana-development/getting-started/how-to-create-websocket-subscriptions-to-solana-blockchain-using-typescript
+[74] https://www.helius.dev/blog/solana-data-tools
+[75] https://www.youtube.com/watch?v=JD1f3lxmis4
+[76] https://docs.helius.dev/data-streaming/enhanced-websockets-beta
+[77] https://github.com/blockworks-foundation/lite-rpc
+[78] https://www.quicknode.com/builders-guide/top-10-solana-rpc-providers
+[79] https://www.youtube.com/watch?v=U82JXBOXBR4
+[80] https://solana.com/vi/rpc
+[81] https://instantnodes.io/articles/solana-rpc-node-performance-optimization
+[82] https://www.onesafe.io/blog/solaxy-layer2-solution-solana-network-congestion
+[83] https://instantnodes.io/articles/solana-rpc-service
+[84] https://simplydecode.com/data-indexing-on-solana/
+[85] https://hackernoon.com/your-dapp-is-vulnerable-heres-whats-causing-it
+[86] https://www.helius.dev/blog/how-to-land-transactions-on-solana
+[87] https://instantnodes.io/articles/common-issues-with-rpc-nodes-and-how-to-address-them
+[88] https://solanacompass.com/projects/category/infrastructure/rpc-nodes
+[89] https://cointelegraph.com/news/solana-projects-delay-launch-network-congestion
+[90] https://www.blockdaemon.com/blog/unlock-solanas-potential-with-ha-rpc-clusters
+[91] https://coinsbench.com/navigating-solana-transaction-size-limits-in-go-tips-tricks-and-lookup-tables-with-the-blocto-05f6630c2eaf
+[92] https://drpc.org/blog/solana-rpc-optimization/
+[93] https://www.reddit.com/r/solana/comments/ql1w40/solana_sounds_like_a_serious_threat_to_ethereum/
+[94] https://www.helius.dev/solana-rpc-nodes
+[95] https://www.linkedin.com/posts/sujithsizon_the-problems-with-solana-data-indexing-activity-7281692392666152960-UbJj
+[96] https://windexer.xyz
+[97] https://www.leewayhertz.com/blockchain-indexing-protocol/
+[98] https://www.aicoin.com/en/article/366412
+[99] https://lu.ma/5mxq9hyo
+[100] https://www.onesafe.io/blog/enhancing-cardano-apps-with-filecoin-storage
+[101] https://dev.to/jamiescript/indexing-smart-contract-data-using-the-graph-protocol-4h95
+[102] https://www.helius.dev/blog/solana-executive-overview
+[103] https://mudrex.com/learn/file-coin-price-prediction-as-per-latest-technical-analysis/
+[104] https://www.mdpi.com/1424-8220/19/20/4444
+[105] https://filecoin.io/provide/
+[106] https://onlinelibrary.wiley.com/doi/10.1155/2021/9910078
+[107] https://www.binance.com/en/square/post/17800956953497
+[108] https://www.sciencedirect.com/science/article/pii/S1319157821000690
+[109] https://github.com/Sovereign-Labs/solana-proofs
+[110] https://docs.storacha.network
+[111] https://coinmarketcap.com/academy/article/how-to-solve-the-blockchain-data-query-issue-and-what-the-graph-service-has-to-say
+[112] https://www.quicknode.com/guides/solana-development/getting-started/an-introduction-to-the-solana-account-model
+[113] https://m.theblockbeats.info/en/news/55159
+[114] https://www.bitget.com/news/detail/12560604225476
+[115] https://developers.metaplex.com/rpc-providers
+[116] https://solanafloor.com/news/metaplex-launches-aura-network-enhancing-data-availability-and-indexing-solana
+[117] https://docs.eclipse.xyz/developers/nfts/metaplex
+[118] https://x.com/Donald_etom/status/1884300193153139113
+[119] https://getblock.io/blog/what-is-solana-das-api-by-metaplex/
+[120] https://developers.metaplex.com/aura
+[121] https://developers.metaplex.com/token-metadata
+[122] https://www.linkedin.com/posts/keith-elliott-47384b35_as-rpcs-adopt-more-aggressive-rate-limiting-activity-7282078848924442624-y6WN
+[123] https://www.binance.com/en/square/post/2024-09-24-metaplex-launches-decentralized-indexing-and-data-availability-network-13954977797361
+[124] https://developers.metaplex.com/token-metadata/collections
+[125] https://www.alchemy.com/overviews/metaplex
+[126] https://developers.metaplex.com/aura/faq
+[127] https://www.chaincatcher.com/en/article/2154264
+[128] https://www.bitget.com/news/detail/12560604480849
+[129] https://github.com/metaplex-foundation/aura
+[130] https://www.quicknode.com/guides/solana-development/nfts/metaplex-core
+[131] https://developers.metaplex.com/umi/metaplex-umi-plugins
+[132] https://www.youtube.com/watch?v=c5i1qQrA1nk
+[133] https://docs.filecoin.io/basics/what-is-filecoin/retrieval-market
+[134] https://filecoin.io/blog/posts/introducing-filoz/
+[135] https://filecoin.io/blog/posts/filecoin-and-chainlink-integration/
+[136] https://www.mitrade.com/insights/news/live-news/article-3-62254-20240217
+[137] https://docs.filecoin.io/basics/how-retrieval-works/basic-retrieval
+[138] https://filecointldr.io/article/state-of-filecoin-2025
+[139] https://filecoin.io/filecoin.pdf
+[140] https://solanacompass.com/learn/Solfate/storing-the-solana-history-on-ipfsfilecoin-project-old-faithful-w-brian-long-from-triton
+[141] https://www.leewayhertz.com/filecoin-retrieval-dashboard/
+[142] https://docs.filecoin.io/nodes/implementations
+[143] https://seagate-cortx-hackathon2022.devpost.com
+[144] https://docs.filecoin.io/basics/what-is-filecoin
+[145] https://www.bitget.com/news/detail/12560604235518
+[146] https://www.linkedin.com/pulse/filecoin-fil-storacha-enhance-decentralized-hot-storage-bappi-cspmc
+[147] https://x.com/Filecoin/status/1758543063767491031
+[148] https://x.com/colinevran/status/1890205715492720812
+[149] https://fil.org/blog/fresh-from-ff-december-2024
+[150] https://developers.metaplex.com/aura/pricing
+[151] https://solanacompass.com/learn/Lightspeed/how-firedancer-will-unlock-solanas-scaling-roadmap-lucas-bruder-liam-heeger
+[152] https://www.nadcab.com/blog/costs-of-deploying-and-executing-solana-smart-contracts
+[153] https://drpc.org/blog/top-solana-rpc-providers/
+[154] https://www.syndica.io/pricing
+[155] https://www.rapidinnovation.io/post/how-much-does-it-cost-to-create-a-solana-token
+[156] https://www.alchemy.com/overviews/dedicated-vs-shared-nodes
+[157] https://www.reddit.com/r/solana/comments/15ni9mo/how_expensive_is_it_to_run_a_solana_node_actually/
+[158] https://solana.com/docs/programs/limitations
+[159] https://metaschool.so/articles/ethereum-vs-solana/
+[160] https://ithy.com/article/solana-sniper-bot-configuration-vaicnk0u
+[161] https://solana.stackexchange.com/questions/4468/what-is-the-cost-of-running-an-rpc-server
+[162] https://itexus.com/blockchain-app-development-cost-a-complete-enterprise-guide-2025/
+[163] https://www.helius.dev/blog/solana-nodes-a-primer-on-solana-rpcs-validators-and-rpc-providers
+[164] https://www.helius.dev/pricing
+[165] https://www.reddit.com/r/solana/comments/1c9q3zo/how_does_solana_scale_longterm/
+[166] https://chainstack.com/how-to-save-on-infrastructure-cost/
+[167] https://www.minarjournal.com/dergi/the-use-of-modular-networks-in-architectural-construction-methods20230705015945.pdf
+[168] https://thegraph.com/blog/index-solana-data-enhanced-support/
+[169] https://www.peaq.network/blog/depins-need-fully-decentralized-real-time-data-pipelines
+[170] https://www.uni-siegen.de/dreams/deliverables/files/dreams_d7.1.2_wind_power_evaluation_and_monitoring_plan_r1-0.pdf
+[171] https://www.pearsonhighered.com/assets/samplechapter/1/5/8/7/1587132125.pdf
+[172] https://blog.sqd.dev/indexing-solana-with-subsquid/
+[173] https://www.halborn.com/blog/post/what-is-depin-decentralized-physical-infrastructure-networks
+[174] https://xray.greyb.com/wind-turbines/modular-components-of-wind-turbine
+[175] https://www.ciscopress.com/articles/article.asp?p=1743279
+[176] https://www.hivenet.com/post/top-decentralized-storage-solutions-for-data-security-and-privacy
+[177] https://www.ethercat.org/download/documents/ee_technik.pdf
+[178] https://support.huawei.com/enterprise/en/doc/EDOC1100169458/72588efd/network-design
+[179] https://www.infura.io/solutions/decentralized-infrastructure-service
+[180] https://www.windtech-international.com/windtech-future/the-right-product-mix-and-a-modular-architecture-can-protect-oem-profits-in-the-age-of-tenders
+[181] https://community.cisco.com/t5/other-network-architecture-subjects/designing-a-network-with-hierarchical-and-modular-design/td-p/4434476
+[182] https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/gtd2.13103
+[183] https://www.cryptoaltruism.org/blog/infographic-an-introduction-to-decentralized-physical-infrastructure-networks-depin
+[184] https://www.humanprotocol.org/blog/human-protocol-foundation-adds-solana-integration
+[185] https://solana.com/docs/core/accounts
+[186] https://docs.routerprotocol.com/develop/message-transfer-via-crosstalk/solana-guides/
+[187] https://solana.com
+[188] https://www.alchemy.com/overviews/solana-account-model
+[189] https://github.com/solana-labs/whitepaper/blob/master/solana-whitepaper-en.pdf
+[190] https://github.com/ipdm-wg
+[191] https://solana.com/developers/courses/intro-to-solana/intro-to-reading-data
+[192] https://github.com/solana-foundation/solana-improvement-documents
+[193] https://solana.com/docs/references/clusters
+[194] https://solana.stackexchange.com/questions/15248/how-to-create-shard-accounts-to-manage-unlimited-account-size
+[195] https://www.getambassador.io/blog/api-documentation-done-right-technical-guide
+[196] https://solana.com/docs/intro/quick-start/reading-from-network
+[197] https://solana.com/docs
+[198] https://techdocs.quidelortho.com/?size=n_40_n&filters%5B0%5D%5Bfield%5D=catalognumberlist&filters%5B0%5D%5Bvalues%5D%5B0%5D=M103&filters%5B0%5D%5Bvalues%5D%5B1%5D=M111&filters%5B0%5D%5Btype%5D=any
+[199] https://www.windarphotonics.com/white-papers/
+[200] https://github.com/solana-foundation/solana-improvement-documents/blob/main/README.md
+[201] https://developer.salesforce.com/docs
+[202] https://github.com/aletheialabs/windexer
+[203] https://www.rapidinnovation.io/post/complete-guide-to-solana-blockchain-development
+[204] https://github.com/near
+[205] https://solana.com/vi/docs/rpc
+[206] https://github.com/linera-io/linera-protocol
+[207] https://www.alchemy.com/overviews/solana-nodes
+[208] https://github.com/vertex-protocol
+[209] https://docs.solanamobile.com/developers/mobile-wallet-adapter-deep-dive
+[210] https://www.npmjs.com/package/@solana-mobile%2Fmobile-wallet-adapter-protocol
+[211] https://docs.filecoin.io/reference/exchanges/exchange-integration
+[212] https://blog.epsilla.com/advanced-rag-optimization-boosting-answer-quality-on-complex-questions-through-query-decomposition-e9d836eaf0d5
+[213] https://fil.org/blog/fast-secure-and-scalable-how-f3-is-reshaping-the-future-of-onchain-storage
+[214] https://www.pluralsight.com/courses/optimizing-data-retrieval-techniques
+[215] https://filecoin.io/blog/posts/2023-expanding-from-a-storage-network-to-enabling-open-services-for-data-part-ii/
+[216] https://holon.investments/here-comes-filecoin-a-mid-year-report/
+[217] https://www.advsyscon.com/blog/data-warehouse-optimization-techniques/
+[218] https://blog.filecointldr.io/state-and-direction-of-filecoin-summarized-4b90c59e3cca
+[219] https://docs.filecoin.io/networks/mainnet/network-performance
+[220] https://www.sitepoint.com/optimize-performance-strategies/
+[221] https://www.gemini.com/cryptopedia/filecoin-fil-democratizing-cloud-storage
+[222] https://www.youtube.com/watch?v=_yMmmISZG2Q
+[223] https://www.linkedin.com/pulse/optimizing-data-retrieval-cheran-wanja-wlcef
+[224] https://fil.org/blog/filecoin-ecosystem-teams-unveil-l2s
+[225] https://filecoin.io/blog/posts/how-storage-and-retrieval-deals-work-on-filecoin/
+[226] https://www.mdpi.com/2078-2489/15/8/429
+[227] https://github.com/Luganodes/Solana-Indexer
+[228] https://webisoft.com/articles/blockchain-indexing-protocol/
+[229] https://www.globenewswire.com/news-release/2021/08/19/2283608/0/en/Aleph-im-Introduces-Decentralized-Indexing-for-the-Solana-Ecosystem.html
+[230] https://ctaverna.github.io/opensearch-metrics/
+[231] https://www.mdpi.com/2227-7390/10/11/1943
+[232] https://kinneygroup.com/blog/working-with-splunk-metrics-indexes/
+[233] https://www.luganodes.com/blog/SolanaIndexer/
+[234] http://papers.neurips.cc/paper/9078-seeing-the-wind-visual-wind-speed-prediction-with-a-coupled-convolutional-and-recurrent-neural-network.pdf
+[235] https://solanacompass.com/learn/Lightspeed/the-future-of-defi-on-solana-tristan-frizza-jayant-krishnamurthy
+[236] https://community.splunk.com/t5/Deployment-Architecture/How-can-you-compare-performance-between-indexers-in-the-same/m-p/201617
+[237] https://docs.rs/solana-indexer
+[238] https://www.mdpi.com/2079-9292/10/2/191
+[239] https://cointelegraph.com/news/just-scalability-wont-save-the-future-of-solana-heres-the-solution
+[240] https://www.sciencedirect.com/topics/computer-science/traditional-index
+[241] https://www.cfbenchmarks.com/blog/cf-benchmarks-launches-the-first-regulated-solana-staking-reward-rate-indices-2
+[242] https://www.sciencedirect.com/science/article/abs/pii/S1568494623003289
+[243] https://www.reddit.com/r/solana/comments/r5brsp/centralization_vs_decentralization_with_solana/
+[244] https://filecointldr.io/article/hot-data-availability-on-cold-storage-building-cost-effective-da-on-filecoin/
+[245] https://blog.filecointldr.io/filecoins-retrieval-markets-update-spotlight-on-project-saturn-9f233ed133ed
+[246] https://docs.filecoin.io/smart-contracts/fundamentals/faqs
+[247] https://www.binance.com/en/square/post/14687774595258
+[248] https://kriptomat.io/cryptocurrency-prices/filecoin-fil-price/what-is/
+[249] https://pl-strflt.notion.site/Filecoin-Saturn-efc122f123f344ff8ff0de6071954dba
+[250] https://fvm.filecoin.io
+[251] https://godex.io/blog/what-is-filecoin-a-guide-to-decentralized-storage
+[252] https://www.odaily.news/en/post/5195500
+[253] https://docs.filecoin.io/basics/how-retrieval-works/saturn
+[254] https://docs.filecoin.io/storage-providers/filecoin-deals/auxiliary-services
+[255] https://www.youtube.com/watch?v=_-8WpXg16Vk
+[256] https://x.com/FilFoundation/status/1769762433252376885
+[257] https://cryptorank.io/news/feed/e2bdf-173638-filecoin-expands-web3-data-economic
+[258] https://milvus.io/ai-quick-reference/how-do-i-handle-distributed-indexing-with-llamaindex
+[259] https://www.linkedin.com/pulse/indexers-enabling-access-decentralized-data-andrea-dal-mas-z06zf
+[260] https://swarmzero.ai/blog/what-is-decentralized-ai
+[261] https://zilliz.com/ai-faq/what-is-the-role-of-indexing-in-distributed-databases
+[262] https://www.alchemy.com/best/indexing-tools
+[263] https://oasisprotocol.org/blog/what-is-decentralized-ai
+[264] https://en.wikipedia.org/wiki/Distributed_artificial_intelligence
+[265] https://miethereum.com/learn/blockchain-indexer/
+[266] https://github.com/subsquid-labs/solana-example
+[267] https://techbullion.com/top-decentralized-ai-solutions/
+[268] https://jklst.org/index.php/home/article/download/172/145/492
+[269] https://viso.ai/edge-ai/decentralized-ai-models/
+[270] https://github.com/hsyndeniz/solana-indexer
+[271] https://www.shiftmarkets.com/blog/ai-crypto-infrastructure
+[272] https://www.linkedin.com/advice/1/what-key-challenges-opportunities-integrating
+[273] https://journal.pandawan.id/italic/article/view/651
+[274] https://www.youtube.com/watch?v=3aUoOEGggdo
+[275] https://fil.org/blog/filecoin-as-the-infrastructure-for-decentralized-ai
+[276] https://www.alchemy.com/list-of/indexing-tools-on-solana
+[277] https://www.thebigwhale.io/tokens/aleph-im
+[278] https://docs.aleph.im/tools/indexer/
+[279] https://alephzero.org/blog/aleph-zero-vs-aleph-im/
+[280] https://aleph-im.github.io/aleph-indexer-framework/
+[281] https://developers.moralis.com/web3-wiki/top/indexing-tools/
+[282] https://www.securities.io/investing-in-aleph-im/
+[283] https://www.youtube.com/watch?v=VeMTH1dr-mY
+[284] https://nextrope.com/aleph-zero-vs-solana-a-comparative-analysis/
+[285] https://docs.aleph.im/tools/indexer/indexer-generator/
+[286] https://www.alchemy.com/overviews/blockchain-indexer
+[287] https://www.youtube.com/watch?v=EtxjvC1SqAA
+[288] https://docs.aleph.im
+[289] https://crates.io/crates/solana-indexer
+[290] https://www.youtube.com/watch?v=Xsrie72SaBs
+[291] https://www.youtube.com/watch?v=yypsqs_n1zk
+[292] https://www.financialexpress.com/business/blockchain-filecoin-current-storage-stands-at-1-07-billion-gigabytes-reports-3173733/
+[293] https://www.binance.com/en/feed/post/3583360401474
+[294] https://filecointldr.io/article/filecoin-s-retrieval-markets-update-spotlight-on-project-saturn/
+[295] https://fil.org/ecosystem-explorer/filecoin-saturn
+[296] https://github.com/filecoin-saturn/L2-node
+[297] https://github.com/filecoin-saturn/explorer/blob/main/README.md
+[298] https://www.binance.com/en-BH/square/post/3583360401474
+[299] https://saturn.tech
+[300] https://ecosystem-wg.notion.site/9-Saturn-Retrieval-Markets-on-Filecoin-88ec5a6f535546e6b7f05adce9a26bb9
+[301] https://github.com/filecoin-saturn
+[302] https://github.com/filecoin-saturn/L1-node
+[303] https://arxiv.org/abs/2306.16023
+[304] https://www.latimes.com/b2bpublishing/business-announcements/story/2024-06-17/what-is-blockchains-potential-for-managing-data-compute-and-models-for-ai
+
+---
+Answer from Perplexity: pplx.ai/share

@@ -11,10 +11,10 @@
     "@slidev/theme-seriph": "^0.21.3"
   },
   "devDependencies": {
-    "@iconify/json": "^2.1.150",
-    "playwright-chromium": "^1.28.1",
+    "@iconify/json": "^2.2.319",
+    "playwright-chromium": "^1.51.1",
     "rimraf": "^3.0.2",
-    "serve": "^14.1.2",
-    "unocss": "^0.47.5"
+    "serve": "^14.2.4",
+    "unocss": "^0.47.6"
   }
 }
