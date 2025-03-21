@@ -117,3 +117,237 @@ html:not(.dark) {
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
+
+/* Animated Blob Background */
+.slidev-layout::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  opacity: 0.7;
+  background: 
+    radial-gradient(circle at 80% 20%, rgba(153, 69, 255, 0.15) 0%, rgba(153, 69, 255, 0.01) 40%) no-repeat,
+    radial-gradient(circle at 20% 80%, rgba(0, 194, 255, 0.15) 0%, rgba(0, 194, 255, 0.01) 40%) no-repeat;
+  filter: blur(30px);
+  animation: blob-animation 15s ease-in-out infinite alternate;
+}
+
+.slidev-layout::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  opacity: 0.5;
+  background: 
+    radial-gradient(circle at 30% 25%, rgba(243, 56, 195, 0.12) 0%, rgba(243, 56, 195, 0.01) 35%) no-repeat,
+    radial-gradient(circle at 70% 75%, rgba(20, 241, 149, 0.12) 0%, rgba(20, 241, 149, 0.01) 35%) no-repeat;
+  filter: blur(40px);
+  animation: blob-animation-alt 20s ease-in-out infinite alternate;
+}
+
+@keyframes blob-animation {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-2%, 2%) scale(1.03);
+  }
+  66% {
+    transform: translate(2%, -1%) scale(0.97);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes blob-animation-alt {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(2%, -2%) scale(1.05);
+  }
+  66% {
+    transform: translate(-1%, 1%) scale(0.98);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* Add this class to create spotlight effect for important elements */
+.spotlight-hover {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.spotlight-hover::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: radial-gradient(circle at center, rgba(153, 69, 255, 0.2) 0%, rgba(153, 69, 255, 0) 70%);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.5s ease;
+}
+
+.spotlight-hover:hover::before {
+  opacity: 1;
+}
+
+/* Make gradients look better in dark mode */
+html.dark .slidev-layout::before,
+html.dark .slidev-layout::after {
+  opacity: 0.15;
+}
+
+/* Title slide special treatment */
+.slidev-layout.cover::before,
+.slidev-layout.cover::after {
+  opacity: 0.85;
+  filter: blur(50px);
+}
+
+/* Make sure layout end gets a special treatment */
+.slidev-layout.center::before,
+.slidev-layout.center::after {
+  opacity: 0.7;
+  filter: blur(60px);
+}
+
+/* Improved Blob Animation */
+.floating-blob {
+  position: fixed;
+  width: 50vmin;
+  height: 50vmin;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.25;
+  z-index: -5;
+  mix-blend-mode: lighten;
+  pointer-events: none;
+  transform-origin: center center;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.floating-blob.purple {
+  top: 20%;
+  left: 20%;
+  background-color: var(--solana-purple);
+  animation: float-blob 18s infinite;
+}
+
+.floating-blob.cyan {
+  bottom: 20%;
+  right: 20%;
+  background-color: var(--solana-cyan);
+  animation: float-blob 15s 2s infinite;
+}
+
+.floating-blob.green {
+  top: 60%;
+  left: 50%;
+  background-color: var(--solana-blue);
+  animation: float-blob 22s 1s infinite;
+}
+
+@keyframes float-blob {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate(-5vw, 3vh) scale(1.2) rotate(5deg);
+  }
+  66% {
+    transform: translate(5vw, -3vh) scale(0.8) rotate(-5deg);
+  }
+  100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+}
+
+/* Add glossy effect to cards */
+.glossy-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.glossy-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.1) 30%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  transform: rotate(30deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glossy-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* Twinkle animation for emphasis */
+.twinkle {
+  position: relative;
+}
+
+.twinkle::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 6px;
+  height: 6px;
+  background: var(--solana-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 10px 2px var(--solana-cyan);
+  animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Background gradient that follows cursor */
+.gradient-cursor-follow {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: -10;
+  opacity: 0.05;
+  background: radial-gradient(
+    circle at var(--x, 50%) var(--y, 50%), 
+    var(--solana-purple) 0%, 
+    transparent 50%
+  );
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.gradient-cursor-follow.active {
+  opacity: 0.1;
+}
