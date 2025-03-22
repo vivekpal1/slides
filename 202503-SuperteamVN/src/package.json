@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "slidev",
+    "build": "slidev build --base /202503-SuperteamVN/ --out ../../dist/202503-SuperteamVN",
+    "export": "slidev export --dark --output ../202503-SuperteamVN.pdf"
+  }
+}

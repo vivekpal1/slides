@@ -1,0 +1,9 @@
+{
+    "private": true,
+    "scripts": {
+      "dev": "slidev",
+      "build": "slidev build --base /jsconf-ie-2024/ --out ../../dist/jsconf-ie-2024",
+      "export": "slidev export --dark --output ../jsconf-ie-2024.pdf"
+    }
+  }
+  

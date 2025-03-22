@@ -36,9 +36,13 @@ importers:
 
   202305-foss-united/src: {}
 
-  jsconf-2023/src: {}
+  202305-jsconf/src: {}
 
-  st-build-stn-01/src: {}
+  202407-fossnweb3/src: {}
+
+  202503-SuperteamVN/src: {}
+
+  jsconf-ie-2024/src: {}
 
 packages:
 

@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "slidev",
+    "build": "slidev build --base /202305-jsconf/ --out ../../dist/202305-jsconf",
+    "export": "slidev export --dark --output ../202305-jsconf.pdf"
+  }
+}

@@ -1,8 +1,0 @@
-{
-  "private": true,
-  "scripts": {
-    "dev": "slidev",
-    "build": "slidev build --base /st-build-stn-01/ --out ../../dist/st-build-stn-01",
-    "export": "slidev export --dark --output ../st-build-stn-01.pdf"
-  }
-}

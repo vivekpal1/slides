@@ -1,0 +1,8 @@
+{
+    "private": true,
+    "scripts": {
+      "dev": "slidev",
+      "build": "slidev build --base /202407-fossnweb3/ --out ../../dist/202407-fossnweb3",
+      "export": "slidev export --dark --output ../202407-fossnweb3.pdf"
+    }
+  }  
