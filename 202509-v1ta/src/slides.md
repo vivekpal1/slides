@@ -360,12 +360,13 @@ Speaker Notes:
 
 ## Three-Phase Market Domination
 
-<div class="fade-in">
+<div class="fade-in" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;">
 
+<div>
 <div class="phase-card">
 <strong>Phase 1 (Months 1-3):</strong> <span class="gradient-text">Foundation</span>
 <br>• Core protocol launch
-<br>• Developer SDK release  
+<br>• Developer SDK release
 <br>• Security audits
 <br>• Initial liquidity
 </div>
@@ -377,7 +378,9 @@ Speaker Notes:
 <br>• Partnership launches
 <br>• Mobile support
 </div>
+</div>
 
+<div>
 <div class="phase-card">
 <strong>Phase 3 (Months 7-12):</strong> <span class="gradient-text">Scale</span>
 <br>• Institutional features
@@ -386,10 +389,17 @@ Speaker Notes:
 <br>• Market leadership
 </div>
 
+<div class="text-center mt-4">
+<strong class="gradient-text">Key Partnerships:</strong>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; text-align: center;">
+  <span>Jupiter</span>
+  <span>Jito</span>
+  <span>Marinade</span>
+  <span>Pyth</span>
+</div>
+</div>
 </div>
 
-<div class="text-center mt-6">
-<strong class="gradient-text">Key Partnerships:</strong> Jupiter • Jito • Marinade • Pyth
 </div>
 
 <!--
@@ -486,25 +496,39 @@ Speaker Notes:
 
 ## Builders Who Ship
 
-**Technical Leadership:**
+<div class="team-section">
 
+<div class="team-card">
+<strong>Technical Leadership</strong>
+<br><br>
 - Built $250M+ TVL protocols
-- Core Solana contributors  
-- 15+ years DeFi experience
+<br>- Core Solana contributors
+<br>- 15+ years DeFi experience
+</div>
 
-**Research & Security:**
+<div class="team-card">
+<strong>Research & Security</strong>
+<br><br>
 - PhD in Cryptoeconomics
-- Published DeFi research
-- Former TradFi quants
+<br>- Published DeFi research
+<br>- Former TradFi quants
+</div>
 
-**Ecosystem Advisors:**
+<div class="team-card">
+<strong>Ecosystem Advisors</strong>
+<br><br>
 - Solana Foundation members
-- Top-tier VC partners
-- DeFi protocol founders
+<br>- Top-tier VC partners
+<br>- DeFi protocol founders
+</div>
 
+</div>
+
+<div class="text-center mt-6">
 *"We're not building another farm, we're creating infrastructure"*
-
-**Combined: 50+ years DeFi experience • $500M+ protocols built**
+<br><br>
+<strong>Combined: 50+ years DeFi experience • $500M+ protocols built</strong>
+</div>
 
 <!--
 Speaker Notes:
