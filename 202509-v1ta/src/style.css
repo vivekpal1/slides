@@ -1,0 +1,319 @@
+/* V1ta Protocol Custom Styles */
+
+:root {
+  --v1ta-dark: #0a0a0a;
+  --v1ta-blue: #00D4FF;
+  --v1ta-purple: #9945FF;
+  --v1ta-white: #ffffff;
+  --v1ta-gray: #6b7280;
+  --v1ta-light-gray: #f3f4f6;
+}
+
+/* Global Background */
+body {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  color: var(--v1ta-white);
+  font-family: 'Inter', sans-serif;
+}
+
+.slidev-layout {
+  background: transparent;
+}
+
+/* Gradient Text Effect */
+.gradient-text {
+  background: linear-gradient(45deg, var(--v1ta-blue), var(--v1ta-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Animated Gradient Text */
+.gradient-text-animated {
+  background: linear-gradient(45deg, var(--v1ta-blue), var(--v1ta-purple), var(--v1ta-blue));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Glass Morphism Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Glow Effects */
+.glow {
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+}
+
+.glow-purple {
+  box-shadow: 0 0 30px rgba(153, 69, 255, 0.3);
+}
+
+.glow-green {
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.3);
+}
+
+/* Progress Bars */
+.progress-bar {
+  background: linear-gradient(90deg, var(--v1ta-blue), var(--v1ta-purple));
+  height: 8px;
+  border-radius: 4px;
+  transition: width 0.8s ease;
+}
+
+/* Button Styles */
+.btn-primary {
+  background: linear-gradient(45deg, var(--v1ta-blue), var(--v1ta-purple));
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 212, 255, 0.4);
+}
+
+/* Code Block Styling */
+.slidev-code {
+  background: rgba(0, 0, 0, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+/* Table Styling */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table th,
+table td {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  text-align: left;
+}
+
+table th {
+  background: rgba(255, 255, 255, 0.05);
+  font-weight: 600;
+}
+
+table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.slide-in-right {
+  animation: slideInRight 0.8s ease-out;
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Number Counter Animation */
+.count-up {
+  font-weight: bold;
+  color: var(--v1ta-blue);
+}
+
+/* Custom List Styling */
+ul.custom-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul.custom-list li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 8px;
+}
+
+ul.custom-list li::before {
+  content: '▶';
+  position: absolute;
+  left: 0;
+  color: var(--v1ta-blue);
+  font-size: 0.8em;
+}
+
+/* Icon Styling */
+.icon-large {
+  font-size: 3rem;
+}
+
+.icon-medium {
+  font-size: 2rem;
+}
+
+.icon-small {
+  font-size: 1.5rem;
+}
+
+/* Timeline Styling */
+.timeline-item {
+  position: relative;
+  padding-left: 60px;
+  margin-bottom: 40px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: -40px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--v1ta-blue), var(--v1ta-purple));
+}
+
+.timeline-item:last-child::before {
+  display: none;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, var(--v1ta-blue), var(--v1ta-purple));
+  border: 3px solid var(--v1ta-dark);
+}
+
+/* Quote Styling */
+.quote {
+  border-left: 4px solid var(--v1ta-blue);
+  padding-left: 20px;
+  font-style: italic;
+  font-size: 1.1em;
+  color: var(--v1ta-light-gray);
+}
+
+/* Metric Cards */
+.metric-card {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.metric-value {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.metric-label {
+  font-size: 0.9rem;
+  color: var(--v1ta-gray);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .glass-card {
+    padding: 16px;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .text-4xl {
+    font-size: 2rem;
+  }
+  
+  .text-3xl {
+    font-size: 1.75rem;
+  }
+}
+
+/* Slide Transitions */
+.slidev-page-transition-enter-active,
+.slidev-page-transition-leave-active {
+  transition: all 0.5s ease;
+}
+
+.slidev-page-transition-enter-from {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.slidev-page-transition-leave-to {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+/* Progress Bar at Bottom */
+.slidev-nav-progress {
+  background: linear-gradient(90deg, var(--v1ta-blue), var(--v1ta-purple));
+  height: 3px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, var(--v1ta-blue), var(--v1ta-purple));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, var(--v1ta-purple), var(--v1ta-blue));
+}

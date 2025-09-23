@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "slidev",
+    "build": "slidev build --base /202509-v1ta/ --out ../../dist/202509-v1ta",
+    "export": "slidev export --dark --output ../202509-v1ta.pdf"
+  }
+}
