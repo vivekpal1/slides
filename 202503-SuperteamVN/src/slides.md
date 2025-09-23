@@ -10,10 +10,9 @@ drawings:
   persist: false
   syncAll: true
 transition: fade-out
-clicks: 1
 routerMode: hash
 title: Windexer - Solana's Data Solution
-download: true
+download: false
 selectable: true
 ---
 
@@ -45,17 +44,13 @@ growY: 90
 
 # Executive Summary
 
-<v-clicks>
-
 - Solana is still fastest scalable Layer 1 high throughput blockchain, but real-world performance drops highly lower under congestion
-  
+
 - Centralized RPC providers create single points of failure
 
 - Inadequate indexing solutions struggle with MEV-heavy transaction flows
 
 - Windexer solution: distributed processing network aiming for 10,000+ RPS and sub-100ms latency
-
-</v-clicks>
 
 <div v-click="5" class="mt-12 flex justify-center">
   <img src="/windexer-overview.png" class="h-40 rounded shadow" />
@@ -75,14 +70,10 @@ growSize: 1.5
 
 # Solana's Technical Challenge
 
-<v-clicks>
-
 - High TPS but constrained by read layer bottlenecks
-- Merkle Tree computation creates latency spikes 
+- Merkle Tree computation creates latency spikes
 - 78% of RPC requests concentrate on just 15% of validator nodes
 - Storage fragmentation requires 4PB+ for full nodes
-
-</v-clicks>
 
 ::right::
 
@@ -261,16 +252,12 @@ growY: 90
 
 # AI/ML Use Cases Enabled
 
-<v-clicks>
-
 ## Real-Time MEV Detection
 
 - 150+ on-chain signals per transaction
 - Tensor processing via neural networks
 - 50ms inference latency using quantized models
 - ZK-proofs for model integrity
-
-</v-clicks>
 
 ::right::
 
