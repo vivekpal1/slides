@@ -16,6 +16,8 @@ title: 'V1ta Protocol - Investor Deck'
 class: 'text-center'
 transition: slide-left
 mdc: true
+download: false
+selectable: true
 ---
 
 <style>
