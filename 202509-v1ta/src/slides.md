@@ -18,6 +18,7 @@ transition: slide-left
 mdc: true
 download: false
 selectable: true
+record: true
 ---
 
 <style>

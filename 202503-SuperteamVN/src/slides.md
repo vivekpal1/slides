@@ -14,6 +14,7 @@ routerMode: hash
 title: Windexer - Solana's Data Solution
 download: false
 selectable: true
+record: 'dev'
 ---
 
 # <span class="solana-gradient">Decentralizing Solana's Data Horizon</span>
