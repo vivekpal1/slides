@@ -1,0 +1,248 @@
+/* RPCv2 Minimal Theme */
+
+:root {
+  --primary-dark: #1a1a1a;
+  --primary-green: #14F195;
+  --primary-purple: #9945FF;
+  --primary-white: #ffffff;
+  --primary-gray: #8888aa;
+  --light-gray: #f8f9fa;
+  --border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Minimal Background */
+body {
+  background: var(--primary-dark);
+  color: var(--primary-white);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.slidev-layout {
+  background: transparent;
+}
+
+/* Simple Accent Colors */
+.accent-green {
+  color: var(--primary-green);
+}
+
+.accent-purple {
+  color: var(--primary-purple);
+}
+
+.text-muted {
+  color: var(--primary-gray);
+}
+
+/* Minimal Cards */
+.card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.card-hover:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--primary-green);
+}
+
+/* Simple Progress */
+.progress-bar {
+  background: var(--primary-green);
+  height: 4px;
+  border-radius: 2px;
+}
+
+/* Minimal Button */
+.btn {
+  background: transparent;
+  border: 1px solid var(--primary-green);
+  color: var(--primary-green);
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  background: var(--primary-green);
+  color: var(--primary-dark);
+}
+
+/* Code Block Styling */
+.slidev-code {
+  background: rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+}
+
+/* Table Styling */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table th,
+table td {
+  border: 1px solid var(--border-color);
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th {
+  background: rgba(255, 255, 255, 0.02);
+  font-weight: 500;
+  color: var(--primary-green);
+}
+
+/* Simple Transitions */
+.fade-in {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Highlight Numbers */
+.highlight-number {
+  font-weight: 600;
+  color: var(--primary-green);
+}
+
+/* Custom List Styling */
+ul.custom-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul.custom-list li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 8px;
+}
+
+ul.custom-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--primary-green);
+  font-size: 1.2em;
+}
+
+/* Icon Styling */
+.icon-large {
+  font-size: 3rem;
+}
+
+.icon-medium {
+  font-size: 2rem;
+}
+
+.icon-small {
+  font-size: 1.5rem;
+}
+
+/* Simple Timeline */
+.timeline-item {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 20px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary-green);
+}
+
+/* Quote Styling */
+.quote {
+  border-left: 2px solid var(--primary-green);
+  padding-left: 16px;
+  color: var(--primary-gray);
+}
+
+/* Simple Metrics */
+.metric {
+  text-align: center;
+}
+
+.metric-value {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--primary-green);
+  margin-bottom: 4px;
+}
+
+.metric-label {
+  font-size: 0.9rem;
+  color: var(--primary-gray);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .glass-card {
+    padding: 16px;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .text-4xl {
+    font-size: 2rem;
+  }
+  
+  .text-3xl {
+    font-size: 1.75rem;
+  }
+}
+
+/* Slide Transitions */
+.slidev-page-transition-enter-active,
+.slidev-page-transition-leave-active {
+  transition: all 0.5s ease;
+}
+
+.slidev-page-transition-enter-from {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.slidev-page-transition-leave-to {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+/* Progress Bar at Bottom */
+.slidev-nav-progress {
+  background: var(--primary-green);
+  height: 2px;
+}
+
+/* Minimal Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-gray);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-green);
+}

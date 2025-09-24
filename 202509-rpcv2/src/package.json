@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "slidev",
+    "build": "slidev build --base /202509-rpcv2/ --out ../../dist/202509-rpcv2",
+    "export": "slidev export --dark --output ../202509-rpcv2.pdf"
+  }
+}
